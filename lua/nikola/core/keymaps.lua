@@ -37,6 +37,16 @@ keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open lazy git" }) --
 -- keymap.set("n", "<leader>/", "gcc", { desc = "comment out line" }) -- open lazy git
 keymap.set("n", "<leader>/", function() require("Comment.api").toggle.linewise.count(vim.v.count > 0 and vim.v.count or 1) end, { desc = "Toggle comment line"})
 keymap.set("n", "<leader>f/", function() require("telescope.builtin").current_buffer_fuzzy_find() end, { desc = "Find words in current buffer" })
+keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", { desc = "Toggle Explorer" })
+keymap.set("n", "<leader>o",
+    function()
+      if vim.bo.filetype == "neo-tree" then
+        vim.cmd.wincmd "p"
+      else
+        vim.cmd.Neotree "focus"
+      end
+    end,
+    { desc = "Toggle Explorer Focus" })
 -- keymap.set["<leader>/"] = {
 --   "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<cr>",
 --   desc = "Toggle comment for selection",
