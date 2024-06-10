@@ -17,10 +17,12 @@ return {
   { import = "astrocommunity/bars-and-lines/bufferline-nvim" },
   { import = "astrocommunity/utility/noice-nvim" },
   { import = "astrocommunity/scrolling/nvim-scrollbar" },
-  { import = "astrocommunity/scrolling/mini-animate" },
+  -- { import = "astrocommunity/scrolling/mini-animate" },
   { import = "astrocommunity/file-explorer/oil-nvim" },
   { import = "astrocommunity/git/diffview-nvim" },
+  { import = "astrocommunity/editing-support/nvim-treesitter-context" },
   { import = "astrocommunity.completion.copilot-lua" },
+  { import = "astrocommunity/pack/full-dadbod" },
   { -- further customize the options set by the community
     "zbirenbaum/copilot.lua",
     opts = {

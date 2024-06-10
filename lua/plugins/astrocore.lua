@@ -1,4 +1,4 @@
--- if true t return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -32,14 +32,12 @@ return {
         spell = false, -- sets vim.opt.spell
         signcolumn = "auto", -- sets vim.opt.signcolumn to auto
         wrap = false, -- sets vim.opt.wrap
+        scrolloff = 10,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
-      },
-      o = {
-        termguicolors = true, -- sets vim.o.termguicolors
       },
     },
     -- Mappings can be configured through AstroCore as well.
@@ -47,21 +45,6 @@ return {
     mappings = {
       -- first key is the mode
       n = {
-        -- second key is the lefthand side of the map
-
-        -- navigate buffer tabs with `H` and `L`
-        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
-
-        -- mappings seen under group name "Buffer"
-        ["<Leader>bD"] = {
-          function()
-            require("astroui.status.heirline").buffer_picker(
-              function(bufnr) require("astrocore.buffer").close(bufnr) end
-            )
-          end,
-          desc = "Pick to close",
-        },
         ["<S->>"] = { "<gv>", desc = "Unindent line" },
         ["<S-<>>"] = { ">gv", desc = "Indent line" },
         ["<leader>W"] = { ":noautocmd w<CR>", desc = "Save without formatting" },
@@ -75,8 +58,31 @@ return {
           "<cmd>BufferLineCyclePrev<CR>",
           desc = "Previous buffer",
         },
-        ["<leader>z"] = { ":CopilotChatInPlace<cr>", desc = "CopilotChat - Run in-place code" },
-        ["<leader>td"] = { "<cmd>Neotree close<cr><cmd>tabnew<cr><bar><cmd>DBUI<cr>", desc = "Open DB UI" }, -- tables with just a `desc` key will be registered with which-key if it's installed
+        ["<leader>z"] = { "<cmd>CopilotChat<CR>", desc = "Copilot Chat" },
+        ["<leader>df"] = { "<cmd>CompilerOpen<CR>", desc = "Open Compiler" },
+        ["<leader><leader>db"] = { "<cmd>Neotree close<cr><cmd>tabnew<cr><bar><bar><cmd>DBUI<cr>" },
+        -- second key is the lefthand side of the map
+
+        -- navigate buffer tabs with `H` and `L`
+        -- L = {
+        --   function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+        --   desc = "Next buffer",
+        -- },
+        -- H = {
+        --   function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+        --   desc = "Previous buffer",
+        -- },
+
+        -- mappings seen under group name "Buffer"
+        ["<Leader>bD"] = {
+          function()
+            require("astroui.status.heirline").buffer_picker(
+              function(bufnr) require("astrocore.buffer").close(bufnr) end
+            )
+          end,
+          desc = "Pick to close",
+        },
+        -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         ["<Leader>b"] = { desc = "Buffers" },
         -- quick save
