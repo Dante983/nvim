@@ -66,18 +66,18 @@ return {
 			npairs.add_rules(
 				{
 					Rule("$", "$", { "tex", "latex" })
-						-- don't add a pair if the next character is %
-						:with_pair(cond.not_after_regex("%%"))
-						-- don't add a pair if  the previous character is xxx
-						:with_pair(
-							cond.not_before_regex("xxx", 3)
-						)
-						-- don't move right when repeat character
-						:with_move(cond.none())
-						-- don't delete if the next character is xx
-						:with_del(cond.not_after_regex("xx"))
-						-- disable adding a newline when you press <cr>
-						:with_cr(cond.none()),
+					-- don't add a pair if the next character is %
+							:with_pair(cond.not_after_regex("%%"))
+					-- don't add a pair if  the previous character is xxx
+							:with_pair(
+								cond.not_before_regex("xxx", 3)
+							)
+					-- don't move right when repeat character
+							:with_move(cond.none())
+					-- don't delete if the next character is xx
+							:with_del(cond.not_after_regex("xx"))
+					-- disable adding a newline when you press <cr>
+							:with_cr(cond.none()),
 				},
 				-- disable for .vim files, but it work for another filetypes
 				Rule("a", "a", "-vim")
@@ -162,8 +162,8 @@ return {
 			},
 		},
 	},
-	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-	{ "folke/neodev.nvim", opts = {} },
+	{ "rcarriga/nvim-dap-ui",         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+	{ "folke/neodev.nvim",            opts = {} },
 	-- {
 	--   "scottmckendry/cyberdream.nvim",
 	--   lazy = false,
@@ -180,41 +180,55 @@ return {
 	--     vim.cmd "colorscheme cyberdream" -- set the colorscheme
 	--   end,
 	-- },
-	{
-		"echasnovski/mini.animate",
-		recommended = true,
-		event = "VeryLazy",
-		opts = function()
-			-- don't use animate when scrolling with the mouse
-			local mouse_scrolled = false
-			for _, scroll in ipairs({ "Up", "Down" }) do
-				local key = "<ScrollWheel" .. scroll .. ">"
-				vim.keymap.set({ "", "i" }, key, function()
-					mouse_scrolled = true
-					return key
-				end, { expr = true })
-			end
-
-			local animate = require("mini.animate")
-			return {
-				resize = {
-					timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
-				},
-				scroll = {
-					timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
-					subscroll = animate.gen_subscroll.equal({
-						predicate = function(total_scroll)
-							if mouse_scrolled then
-								mouse_scrolled = false
-								return false
-							end
-							return total_scroll > 1
-						end,
-					}),
-				},
-			}
-		end,
-	},
+	-- {
+	-- 	"echasnovski/mini.animate",
+	-- 	recommended = true,
+	-- 	event = "VeryLazy",
+	-- 	opts = function()
+	-- 		-- don't use animate when scrolling with the mouse
+	-- 		local mouse_scrolled = false
+	-- 		for _, scroll in ipairs({ "Up", "Down" }) do
+	-- 			local key = "<ScrollWheel" .. scroll .. ">"
+	-- 			vim.keymap.set({ "", "i" }, key, function()
+	-- 				mouse_scrolled = true
+	-- 				return key
+	-- 			end, { expr = true })
+	-- 		end
+	--
+	-- 		local animate = require("mini.animate")
+	-- 		return {
+	-- 			resize = {
+	-- 				timing = animate.gen_timing.linear({ duration = 50, unit = "total" }),
+	-- 			},
+	-- 			scroll = {
+	-- 				timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
+	-- 				subscroll = animate.gen_subscroll.equal({
+	-- 					predicate = function(total_scroll)
+	-- 						if mouse_scrolled then
+	-- 							mouse_scrolled = false
+	-- 							return false
+	-- 						end
+	-- 						return total_scroll > 1
+	-- 					end,
+	-- 				}),
+	-- 			},
+	-- 		}
+	-- 	end,
+	-- },
+	-- {
+	-- prebrzo, ne vidim pokret
+	-- 	"gen740/SmoothCursor.nvim",
+	-- 	config = function()
+	-- 		require("smoothcursor").setup()
+	-- 	end,
+	-- },
+	-- {
+	-- 	"declancm/cinnamon.nvim",
+	-- 	config = function()
+	-- 		require("cinnamon").setup()
+	-- 	end,
+	-- },
+	{ "psliwka/vim-smoothie" },
 	{
 		"NStefan002/15puzzle.nvim",
 		cmd = "Play15puzzle",
