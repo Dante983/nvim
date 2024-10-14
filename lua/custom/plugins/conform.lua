@@ -29,6 +29,7 @@ return {
       css = { 'prettierd' },
       tmpl = { 'htmlbeautifier', 'htmlhint' },
       yaml = { 'yamlfmt' },
+      blade = { 'blade-formatter' },
     },
     -- Set default options
     default_format_opts = {
