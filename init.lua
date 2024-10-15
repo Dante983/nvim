@@ -264,6 +264,8 @@ vim.keymap.set('n', '<leader>Oq', '<cmd>ObsidianQuickSwitch<CR>', { desc = 'Quic
 -- end, { desc = 'Accept Copilot suggestion' })
 vim.keymap.set('n', '<leader>co', '<cmd>NeoCodeium chat<CR>', { desc = 'Codeium Chat', noremap = true, silent = true })
 
+vim.keymap.set('n', '<leader>Us', '<cmd>TSToggle highlight<CR>', { desc = 'Toggle syntax highlight', noremap = true, silent = true })
+
 -- update mason and lazy
 vim.api.nvim_set_keymap('n', '<leader>u', ':MasonUpdate<CR> | :Lazy update<CR>', { desc = 'update mason and lazy', noremap = true, silent = true })
 -- [[ Basic Autocommands ]]
@@ -1003,7 +1005,7 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'php', 'javascript' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'php', 'javascript', 'json' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
