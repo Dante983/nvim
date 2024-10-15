@@ -2,9 +2,15 @@ return {
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
-    config = true,
-    -- use opts = {} for passing setup options
-    -- this is equivalent to setup({}) function
+    -- Optional dependency
+    dependencies = { 'hrsh7th/nvim-cmp' },
+    config = function()
+      require('nvim-autopairs').setup {}
+      -- If you want to automatically add `(` after selecting a function or method
+      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+      local cmp = require 'cmp'
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+    end,
   },
   {
     'karb94/neoscroll.nvim',
@@ -186,12 +192,12 @@ return {
   --     }
   --   end,
   -- },
-  {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup { '*' }
-    end,
-  },
+  -- {
+  --   'norcalli/nvim-colorizer.lua',
+  --   config = function()
+  --     require('colorizer').setup { '*' }
+  --   end,
+  -- },
   -- { 'wsdjeg/vim-chat' },
   -- {
   --   'm4xshen/hardtime.nvim',
