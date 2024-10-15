@@ -16,6 +16,7 @@ return {
         --         return "gpt-3.5-turbo"
         --     end
         -- end,
+        -- model = 'gpt-4-1106-preview',
         model = 'gpt-3.5-turbo',
         frequency_penalty = 0,
         presence_penalty = 0,
@@ -29,6 +30,7 @@ return {
   dependencies = {
     'MunifTanjim/nui.nvim',
     'nvim-lua/plenary.nvim',
+    'folke/trouble.nvim', -- optional
     'nvim-telescope/telescope.nvim',
   },
 }
