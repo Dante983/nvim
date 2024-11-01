@@ -1032,6 +1032,12 @@ require('lazy').setup({
           ['.*%.blade%.php'] = 'blade',
         },
       }
+      -- Add this autocmd to start Treesitter automatically
+      vim.api.nvim_create_autocmd('BufEnter', {
+        callback = function()
+          vim.cmd 'TSEnable highlight'
+        end,
+      })
     end, -- There are additional nvim-treesitter modules that you can use to interact
     -- with nvim-treesitter. You should go explore a few and see what interests you:
     --
