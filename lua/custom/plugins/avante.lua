@@ -127,4 +127,10 @@ return {
       ft = { 'markdown', 'Avante' },
     },
   },
+  keys = {
+    { 'n', '<leader>at', '<cmd>AvanteSidebarToggle<CR>', { noremap = true, silent = true } },
+    { 'n', '<leader>aa', '<cmd>AvanteAsk<CR>', { noremap = true, silent = true } },
+    { 'n', '<leader>an', '<cmd>AvanteNextSuggestion<CR>', { noremap = true, silent = true } },
+    { 'n', '<leader>ap', '<cmd>AvantePrevSuggestion<CR>', { noremap = true, silent = true } },
+  },
 }
