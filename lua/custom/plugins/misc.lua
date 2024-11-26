@@ -12,12 +12,18 @@ return {
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
+  -- scrilling pluggins
   {
     'karb94/neoscroll.nvim',
     config = function()
       require('neoscroll').setup {}
     end,
   },
+  {
+    'sphamba/smear-cursor.nvim',
+    opts = {},
+  },
+  -- end scrilling pluggins
   {
     'christoomey/vim-tmux-navigator',
     cmd = {
