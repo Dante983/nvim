@@ -267,7 +267,7 @@ vim.keymap.set('n', '<leader>co', '<cmd>NeoCodeium chat<CR>', { desc = 'Codeium 
 vim.keymap.set('n', '<leader>Us', '<cmd>TSToggle highlight<CR>', { desc = 'Toggle syntax highlight', noremap = true, silent = true })
 
 -- update mason and lazy
-vim.api.nvim_set_keymap('n', '<leader>u', ':MasonUpdate<CR> | :Lazy update<CR>', { desc = 'update mason and lazy', noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>Uu', ':MasonUpdate<CR> | :Lazy update<CR>', { desc = 'Update Mason and Lazy', noremap = true, silent = true })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
