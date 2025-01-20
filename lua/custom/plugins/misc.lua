@@ -217,4 +217,15 @@ return {
       require('leap').create_default_mappings()
     end,
   },
+  {
+    'NStefan002/speedtyper.nvim',
+    lazy = false,
+    branch = 'v2',
+  },
+  {
+    'nvzone/typr',
+    cmd = 'TyprStats',
+    dependencies = 'nvzone/volt',
+    opts = {},
+  },
 }

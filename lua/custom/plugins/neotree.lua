@@ -149,7 +149,15 @@ return {
         -- A list of functions, each representing a global custom command
         -- that will be available in all sources (if not overridden in `opts[source_name].commands`)
         -- see `:h neo-tree-custom-commands-global`
-        commands = {},
+        commands = {
+          image_wezterm = function(state)
+            local node = state.tree:get_node()
+            if node.type == 'file' then
+              require('image_preview').PreviewImage(node.path)
+            end
+          end,
+        },
+
         window = {
           position = 'left',
           width = 40,
@@ -275,6 +283,7 @@ return {
               ['os'] = { 'order_by_size', nowait = false },
               ['ot'] = { 'order_by_type', nowait = false },
               -- ['<key>'] = function(state) ... end,
+              ['<leader>Pi'] = 'image_wezterm', -- " or another map
             },
             fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
               ['<down>'] = 'move_cursor_down',
