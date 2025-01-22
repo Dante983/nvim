@@ -32,7 +32,7 @@ return {
 
     local diff = {
       'diff',
-      colored = false,
+      colored = true,
       symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
       cond = hide_in_width,
     }
@@ -40,7 +40,8 @@ return {
     require('lualine').setup {
       options = {
         icons_enabled = true,
-        theme = 'catppuccin', -- Set theme based on environment variable
+        -- theme = 'catppuccin', -- Set theme based on environment variable
+        theme = 'everforest',
         -- Some useful glyphs:
         -- https://www.nerdfonts.com/cheat-sheet
         --        

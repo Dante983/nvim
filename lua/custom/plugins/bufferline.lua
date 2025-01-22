@@ -55,7 +55,10 @@ return {
         },
         -- separator_selected = {},
         -- tab_selected = {},
-        -- background = {},
+        -- background = {
+        --   fg = '2',
+        --   bg = '3',
+        -- },
         -- indicator_selected = {},
         -- fill = {},
       },
