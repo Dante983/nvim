@@ -128,7 +128,7 @@ return {
 
         buf_options = {},
         win_options = {
-          cursorline = true,
+          cursorline = false,
           cursorlineopt = 'both',
         },
 

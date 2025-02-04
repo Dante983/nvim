@@ -14,9 +14,19 @@ return {
   },
   -- scrilling pluggins
   {
-    'karb94/neoscroll.nvim',
+    'declancm/cinnamon.nvim',
+    version = '*', -- use latest release
+    opts = {},
     config = function()
-      require('neoscroll').setup {}
+      require('cinnamon').setup {
+        -- Enable all provided keymaps
+        keymaps = {
+          basic = true,
+          extra = true,
+        },
+        -- Only scroll the window
+        options = { mode = 'window' },
+      }
     end,
   },
   {

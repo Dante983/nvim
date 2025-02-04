@@ -202,7 +202,7 @@ return {
         },
         -- Add specific hightlight groups
         on_highlights = function(highlights, colors)
-          -- highlights.Include.fg = colors.red -- Using `red` foreground for Includes
+          highlights.Include.fg = colors.red -- Using `red` foreground for Includes
         end,
       }
 
