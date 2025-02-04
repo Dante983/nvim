@@ -41,7 +41,8 @@ return {
       options = {
         icons_enabled = true,
         -- theme = 'catppuccin', -- Set theme based on environment variable
-        theme = 'everforest',
+        -- theme = 'everforest',
+        theme = 'NeoSolarized',
         -- Some useful glyphs:
         -- https://www.nerdfonts.com/cheat-sheet
         --        

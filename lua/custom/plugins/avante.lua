@@ -8,9 +8,9 @@ return {
     provider = 'claude',
     auto_suggestions_provider = 'copilot',
     behavior = {
-      auto_suggestions = true,
+      auto_suggestions = false,
     },
-    hints = { enabled = true },
+    hints = { enabled = false },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = 'make',
