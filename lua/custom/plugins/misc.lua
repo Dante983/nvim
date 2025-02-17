@@ -239,4 +239,30 @@ return {
     dependencies = 'nvzone/volt',
     opts = {},
   },
+  -- {
+  --   'AckslD/nvim-neoclip.lua',
+  --   dependencies = {
+  --     { 'kkharji/sqlite.lua', module = 'sqlite' },
+  --     -- you'll need at least one of these
+  --     { 'nvim-telescope/telescope.nvim' },
+  --     -- {'ibhagwan/fzf-lua'},
+  --   },
+  --   config = function()
+  --     require('neoclip').setup()
+  --   end,
+  -- },
+  'princejoogie/dir-telescope.nvim',
+  -- telescope.nvim is a required dependency
+  dependencies = 'nvim-telescope/telescope.nvim',
+  config = function()
+    require('dir-telescope').setup {
+      -- these are the default options set
+      hidden = true,
+      no_ignore = false,
+      show_preview = true,
+      follow_symlinks = false,
+    }
+  end,
+  vim.keymap.set('n', '<leader>fW', '<cmd>Telescope dir live_grep<CR>', { desc = '[F]ind word in Dir', noremap = true, silent = true }),
+  vim.keymap.set('n', '<leader>fD', '<cmd>Telescope dir find_files<CR>', { desc = '[F]ind Dir in Dir', noremap = true, silent = true }),
 }
