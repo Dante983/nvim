@@ -53,29 +53,25 @@ return {
   },
   {
     'stevearc/resession.nvim',
-    -- opts = {
     config = function()
       local resession = require 'resession'
 
       ---@diagnostic disable-next-line: missing-parameter
       resession.setup()
 
-      -- Resession does NOTHING automagically, so we have to set up some keymaps
       vim.keymap.set('n', '<leader>Ss', resession.save, { desc = 'Save Session' })
       vim.keymap.set('n', '<leader>SL', resession.load, { desc = 'Load Session' })
       vim.keymap.set('n', '<leader>Sd', resession.delete, { desc = 'Delete Session' })
       vim.keymap.set('n', '<leader>Sl', function()
-        require('resession').load 'Last'
+        require('resession').load 'last'
       end, { desc = 'Load last session' })
 
       vim.api.nvim_create_autocmd('VimLeavePre', {
         callback = function()
-          -- Always save a special session named "last"
           resession.save 'last'
         end,
       })
     end,
-    -- },
   },
   {
     'rcarriga/nvim-notify',
