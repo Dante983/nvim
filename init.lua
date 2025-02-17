@@ -1,4 +1,4 @@
---[[
+--[[init
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -119,7 +119,7 @@ vim.schedule(function()
 end)
 
 -- Enable break indent
-vim.opt.breakindent = true
+vim.opt.breakindent = false
 
 -- Save undo history
 vim.opt.undofile = true
@@ -507,6 +507,9 @@ require('lazy').setup({
         require('telescope.builtin').find_files { hidden = true, no_ignore = true }
       end, { desc = '[F]ind in all files' })
       vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind Buffers' })
+      vim.keymap.set('n', '<leader>fy', builtin.registers, { desc = '[F]ind Registers' })
+      -- vim.keymap.set('n', '<leader>fW', require('telescope').extensions.dir.live_grep(), { desc = '[F]ind Word in Dir' })
+      -- vim.keymap.set('n', '<leader>fD', require('telescope').extensions.dir.find_files(), { desc = '[F]ind Dir in Dir' })
       -- vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -1015,7 +1018,7 @@ require('lazy').setup({
         --  the list of additional_virm_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby' },
       },
-      indent = { enable = true, disable = { 'ruby' } },
+      indent = { enable = true, disable = { 'ruby', 'php' } },
     },
     config = function()
       local parser_config = require('nvim-treesitter.parsers').get_parser_configs()

@@ -1,20 +1,36 @@
--- nvim v0.8.0
+-- -- nvim v0.8.0
 return {
-  'kdheepak/lazygit.nvim',
-  cmd = {
-    'LazyGit',
-    'LazyGitConfig',
-    'LazyGitCurrentFile',
-    'LazyGitFilter',
-    'LazyGitFilterCurrentFile',
-  },
-  -- optional for floating window border decoration
-  dependencies = {
-    'nvim-lua/plenary.nvim',
-  },
-  -- setting the keybinding for LazyGit with 'keys' is recommended in
-  -- order to load the plugin when the command is run for the first time
-  keys = {
-    { '<leader>tg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
-  },
+  --   'kdheepak/lazygit.nvim',
+  --   cmd = {
+  --     'LazyGit',
+  --     'LazyGitConfig',
+  --     'LazyGitCurrentFile',
+  --     'LazyGitFilter',
+  --     'LazyGitFilterCurrentFile',
+  --   },
+  --   -- optional for floating window border decoration
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  --   config = function()
+  --     -- Setup double ESC to close LazyGit
+  --     vim.api.nvim_create_autocmd('FileType', {
+  --       pattern = 'lazygit',
+  --       callback = function()
+  --         local last_esc_time = 0
+  --         vim.keymap.set('n', '<ESC>', function()
+  --           local current_time = vim.loop.now()
+  --           if current_time - last_esc_time <= 300 then -- 300ms threshold for double press
+  --             vim.cmd 'q!'
+  --           end
+  --           last_esc_time = current_time
+  --         end, { buffer = true, desc = 'Double ESC to close LazyGit' })
+  --       end,
+  --     })
+  --   end,
+  --   -- setting the keybinding for LazyGit with 'keys' is recommended in
+  --   -- order to load the plugin when the command is run for the first time
+  --   keys = {
+  --     { '<leader>tg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
+  --   },
 }

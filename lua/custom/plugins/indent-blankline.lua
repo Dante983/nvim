@@ -4,6 +4,7 @@ return {
   opts = {
     indent = {
       char = '▏',
+      tab_char = '▎', -- This was the fix
     },
     scope = {
       show_start = false,

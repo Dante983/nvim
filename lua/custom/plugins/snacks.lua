@@ -98,6 +98,20 @@ return {
     --   desc = 'Lazygit Log (cwd)',
     -- },
     {
+      '<leader>tg',
+      function()
+        require('snacks').lazygit()
+      end,
+      desc = 'Lazygit',
+    },
+    {
+      '<leader>tl',
+      function()
+        require('snacks').lazygit.log()
+      end,
+      desc = 'Lazygit Logs',
+    },
+    {
       '<leader>cR',
       function()
         Snacks.rename.rename_file()
