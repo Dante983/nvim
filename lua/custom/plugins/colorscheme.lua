@@ -313,4 +313,39 @@ return {
   --     vim.cmd.colorscheme 'solarized-osaka'
   --   end,
   -- },
+  -- {
+  --   'rmehri01/onenord.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   -- opts = {},
+  --   config = function()
+  --     require('onenord').setup {
+  --       theme = 'dark',
+  --       borders = false,
+  --       fade_nc = true,
+  --       disable = {
+  --         background = true,
+  --         float_background = true,
+  --         cursorline = false,
+  --         -- term_colors = false,
+  --         eob_lines = true,
+  --       },
+  --       vim.cmd.colorscheme 'onenord',
+  --     }
+  --     local bg_transparent = true
+  --
+  --     local toggle_transparency = function()
+  --       bg_transparent = not bg_transparent
+  --       vim.g.transparent_background = bg_transparent
+  --       require('onenord').setup {
+  --         disable = {
+  --           background = bg_transparent,
+  --         },
+  --       }
+  --       vim.cmd [[colorscheme onenord]]
+  --     end
+  --
+  --     vim.keymap.set('n', '<leader>bg', toggle_transparency, { desc = 'Toggle Transaprency', noremap = true, silent = true })
+  --   end,
+  -- },
 }
