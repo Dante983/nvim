@@ -28,6 +28,9 @@ return {
       {
         name = 'personal',
         path = '~/notes/personal',
+        overrides = {
+          notes_subdir = 'notes/dev',
+        },
       },
       {
         name = 'work',
@@ -67,4 +70,12 @@ return {
 
     -- see below for full list of options 👇
   },
+
+  vim.api.nvim_create_user_command('ObsidianGitSync', function()
+    local sync_file = '~/notes/personal/.trigger_git_sync'
+    vim.fn.writefile({}, sync_file)
+    print '📡 Poslat signal Obsidianu da izvrši git sync.'
+  end, {}),
+
+  vim.keymap.set('n', '<leader>OS', ':ObsidianGitSync<CR>', { desc = 'Git Sync in Obsidian' }),
 }
