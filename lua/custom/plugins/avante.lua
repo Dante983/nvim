@@ -5,13 +5,23 @@ return {
   version = false, -- set this if you want to always pull the latest change
   opts = {
     -- provider = 'openai',
-    provider = 'claude',
-    claude = {
-      endpoint = 'https://api.anthropic.com',
-      model = 'claude-3-5-sonnet-20241022',
-      -- model = 'claude-3-7-sonnet-20250219',
-      temperature = 0,
-      max_tokens = 4096,
+    -- provider = 'claude',
+    -- claude = {
+    --   endpoint = 'https://api.anthropic.com',
+    --   model = 'claude-3-5-sonnet-20241022',
+    --   -- model = 'claude-3-7-sonnet-20250219',
+    --   temperature = 0,
+    --   max_tokens = 4096,
+    -- },
+    provider = 'deepseek',
+    vendors = {
+      deepseek = {
+        __inherited_from = 'openai',
+        -- api_key_name = 'sk-d40ed4aa9f7f4ca8b29b63dece2fa939',
+        api_key_name = 'DEEPSEEK_API_KEY',
+        endpoint = 'https://api.deepseek.com',
+        model = 'deepseek-coder',
+      },
     },
     -- auto_suggestions_provider = 'copilot',
     behavior = {
