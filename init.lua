@@ -162,6 +162,15 @@ vim.opt.termguicolors = true
 vim.opt.conceallevel = 2
 vim.g.codeium_open_chat_in_buffer = 1
 
+vim.diagnostic.config {
+  -- virtual_text = true,
+  -- virtual_lines = true
+  underline = false,
+  signs = true,
+  update_in_insert = true,
+  -- severity_sort = true,
+}
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
