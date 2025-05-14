@@ -173,56 +173,56 @@ return {
   --     -- vim.cmd.colorscheme 'bamboo'
   --   end,
   -- },
-  -- {
-  --   'Tsuzat/NeoSolarized.nvim',
-  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  --   config = function()
-  --     local ok_status, NeoSolarized = pcall(require, 'NeoSolarized')
-  --
-  --     if not ok_status then
-  --       return
-  --     end
-  --
-  --     NeoSolarized.setup {
-  --       -- your configuration comes here
-  --       style = 'dark', -- "dark" or "light"
-  --       transparent = true, -- true/false; Enable this to disable setting the background color
-  --       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-  --       enable_italics = true, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
-  --       styles = {
-  --         -- Style to be applied to different syntax groups
-  --         comments = { italic = true },
-  --         keywords = { italic = true },
-  --         functions = { bold = true },
-  --         variables = {},
-  --         string = { italic = true },
-  --         underline = true, -- true/false; for global underline
-  --         undercurl = true, -- true/false; for global undercurl
-  --       },
-  --       -- Add specific hightlight groups
-  --       on_highlights = function(highlights, colors)
-  --         highlights.Include.fg = colors.red -- Using `red` foreground for Includes
-  --       end,
-  --     }
-  --
-  --     -- NeoSolarized.setup()
-  --     -- local bg_transparent = true
-  --     -- -- --
-  --     -- local toggle_transparency = function()
-  --     --   bg_transparent = not bg_transparent
-  --     --   vim.g.transparent_background = bg_transparent
-  --     --   NeoSolarized.setup {
-  --     --     transparent = bg_transparent,
-  --     --     style = 'dark',
-  --     --   }
-  --     --   vim.cmd [[colorscheme NeoSolarized]]
-  --     -- end
-  --     -- --
-  --     -- vim.keymap.set('n', '<leader>bg', toggle_transparency, { desc = 'Transparent background', noremap = true, silent = true })
-  --     vim.cmd [[ colorscheme NeoSolarized ]]
-  --   end,
-  -- },
+  {
+    'Tsuzat/NeoSolarized.nvim',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
+    config = function()
+      local ok_status, NeoSolarized = pcall(require, 'NeoSolarized')
+
+      if not ok_status then
+        return
+      end
+
+      NeoSolarized.setup {
+        -- your configuration comes here
+        style = 'dark', -- "dark" or "light"
+        transparent = true, -- true/false; Enable this to disable setting the background color
+        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+        enable_italics = true, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
+        styles = {
+          -- Style to be applied to different syntax groups
+          comments = { italic = true },
+          keywords = { italic = true },
+          functions = { bold = true },
+          variables = {},
+          string = { italic = true },
+          underline = true, -- true/false; for global underline
+          undercurl = true, -- true/false; for global undercurl
+        },
+        -- Add specific hightlight groups
+        on_highlights = function(highlights, colors)
+          highlights.Include.fg = colors.red -- Using `red` foreground for Includes
+        end,
+      }
+
+      -- NeoSolarized.setup()
+      -- local bg_transparent = true
+      -- -- --
+      -- local toggle_transparency = function()
+      --   bg_transparent = not bg_transparent
+      --   vim.g.transparent_background = bg_transparent
+      --   NeoSolarized.setup {
+      --     transparent = bg_transparent,
+      --     style = 'dark',
+      --   }
+      --   vim.cmd [[colorscheme NeoSolarized]]
+      -- end
+      -- --
+      -- vim.keymap.set('n', '<leader>bg', toggle_transparency, { desc = 'Transparent background', noremap = true, silent = true })
+      vim.cmd [[ colorscheme NeoSolarized ]]
+    end,
+  },
   -- {
   --   'scottmckendry/cyberdream.nvim',
   --   lazy = false,
@@ -319,39 +319,39 @@ return {
   --     vim.cmd.colorscheme 'solarized-osaka'
   --   end,
   -- },
-  {
-    'rmehri01/onenord.nvim',
-    lazy = false,
-    priority = 1000,
-    -- opts = {},
-    config = function()
-      require('onenord').setup {
-        theme = 'dark',
-        borders = false,
-        fade_nc = true,
-        disable = {
-          background = true,
-          float_background = true,
-          cursorline = false,
-          -- term_colors = false,
-          eob_lines = true,
-        },
-        vim.cmd.colorscheme 'onenord',
-      }
-      local bg_transparent = true
-
-      local toggle_transparency = function()
-        bg_transparent = not bg_transparent
-        vim.g.transparent_background = bg_transparent
-        require('onenord').setup {
-          disable = {
-            background = bg_transparent,
-          },
-        }
-        vim.cmd [[colorscheme onenord]]
-      end
-
-      vim.keymap.set('n', '<leader>bg', toggle_transparency, { desc = 'Toggle Transaprency', noremap = true, silent = true })
-    end,
-  },
+  -- {
+  --   'rmehri01/onenord.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  --   -- opts = {},
+  --   config = function()
+  --     require('onenord').setup {
+  --       theme = 'dark',
+  --       borders = false,
+  --       fade_nc = true,
+  --       disable = {
+  --         background = true,
+  --         float_background = true,
+  --         cursorline = false,
+  --         -- term_colors = false,
+  --         eob_lines = true,
+  --       },
+  --       vim.cmd.colorscheme 'onenord',
+  --     }
+  --     local bg_transparent = true
+  --
+  --     local toggle_transparency = function()
+  --       bg_transparent = not bg_transparent
+  --       vim.g.transparent_background = bg_transparent
+  --       require('onenord').setup {
+  --         disable = {
+  --           background = bg_transparent,
+  --         },
+  --       }
+  --       vim.cmd [[colorscheme onenord]]
+  --     end
+  --
+  --     vim.keymap.set('n', '<leader>bg', toggle_transparency, { desc = 'Toggle Transaprency', noremap = true, silent = true })
+  --   end,
+  -- },
 }
