@@ -76,58 +76,6 @@ return {
   {
     'rcarriga/nvim-notify',
   },
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {
-      -- require('notify').setup {
-      --   background_colour = '#000000',
-      -- },
-      -- add any options here
-      lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-        override = {
-          ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
-          ['vim.lsp.util.stylize_markdown'] = true,
-          ['cmp.entry.get_documentation'] = true, -- requires hrsh7th/nvim-cmp
-        },
-      },
-      -- you can enable a preset for easier configuration
-      presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
-        long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
-      },
-      vim.keymap.set('n', '<leader>nl', function()
-        require('noice').cmd 'last'
-      end, { desc = 'Last Message' }),
-
-      vim.keymap.set('n', '<leader>nd', function()
-        require('noice').cmd 'dismiss'
-      end, { desc = 'Dismiss Message' }),
-
-      vim.keymap.set('n', '<leader>nh', function()
-        require('noice').cmd 'history'
-      end, { desc = 'History' }),
-    },
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      'rcarriga/nvim-notify',
-    },
-    config = function()
-      require('noice').setup {
-        -- Your existing configuration
-      }
-      -- Set the background color for NotifyBackground highlight group
-      vim.cmd [[highlight NotifyBackground guibg=#000000]]
-    end,
-  },
   { 'fladson/vim-kitty' },
   {
     'f-person/git-blame.nvim',
@@ -153,57 +101,6 @@ return {
     end,
     config = true,
   },
-  -- {
-  --   'zbirenbaum/copilot.lua',
-  --   cmd = 'Copilot',
-  --   event = 'InsertEnter',
-  --   config = function()
-  --     require('copilot').setup {
-  --       panel = {
-  --         enabled = true,
-  --         auto_refresh = false,
-  --         keymap = {
-  --           jump_prev = '[[',
-  --           jump_next = ']]',
-  --           accept = '<CR>',
-  --           refresh = 'gr',
-  --           open = '<M-CR>',
-  --         },
-  --         layout = {
-  --           position = 'bottom', -- | top | left | right
-  --           ratio = 0.4,
-  --         },
-  --       },
-  --       suggestion = {
-  --         enabled = true,
-  --         auto_trigger = true,
-  --         hide_during_completion = true,
-  --         debounce = 75,
-  --         keymap = {
-  --           accept = '<M-l>',
-  --           accept_word = false,
-  --           accept_line = false,
-  --           next = '<M-]>',
-  --           prev = '<M-[>',
-  --           dismiss = '<C-]>',
-  --         },
-  --       },
-  --       filetypes = {
-  --         yaml = false,
-  --         markdown = false,
-  --         help = false,
-  --         gitcommit = false,
-  --         gitrebase = false,
-  --         hgcommit = false,
-  --         svn = false,
-  --         cvs = false,
-  --         ['.'] = false,
-  --       },
-  --       copilot_node_command = 'node', -- Node.js version must be > 18.x
-  --       server_opts_overrides = {},
-  --     }
-  --   end,
-  -- },
   {
     'norcalli/nvim-colorizer.lua',
     event = 'BufRead',
@@ -211,13 +108,6 @@ return {
       require('colorizer').setup { '*' }
     end,
   },
-  -- { 'wsdjeg/vim-chat' },
-  -- {
-  --   'm4xshen/hardtime.nvim',
-  --   event = 'VeryLazy',
-  --   dependencies = { 'MunifTanjim/nui.nvim', 'nvim-lua/plenary.nvim' },
-  --   opts = {},
-  -- },
   {
     'folke/flash.nvim',
     event = 'VeryLazy',

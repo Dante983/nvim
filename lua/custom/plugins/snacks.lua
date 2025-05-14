@@ -4,7 +4,7 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    bigfile = { enabled = false },
+    bigfile = { enabled = true },
     dashboard = {
       enabled = true,
       sections = {
@@ -41,6 +41,7 @@ return {
     quickfile = { enabled = false },
     statuscolumn = { enabled = false },
     words = { enabled = false },
+    input = { enabled = true },
     styles = {
       notification = {
         wo = { wrap = true }, -- Wrap notifications
