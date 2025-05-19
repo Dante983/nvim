@@ -1,18 +1,10 @@
 return {
   'yetone/avante.nvim',
   event = 'VeryLazy',
-  lazy = false,
-  version = false, -- set this if you want to always pull the latest change
+  version = 'v0.0.23', -- Never set this value to "*"! Never!
   opts = {
-    -- provider = 'openai',
-    -- provider = 'claude',
-    -- claude = {
-    --   endpoint = 'https://api.anthropic.com',
-    --   model = 'claude-3-5-sonnet-20241022',
-    --   -- model = 'claude-3-7-sonnet-20250219',
-    --   temperature = 0,
-    --   max_tokens = 4096,
-    -- },
+    -- add any opts here
+    -- for example
     provider = 'deepseek',
     vendors = {
       deepseek = {
@@ -23,23 +15,7 @@ return {
         model = 'deepseek-coder',
       },
     },
-    -- auto_suggestions_provider = 'copilot',
-    behavior = {
-      auto_suggestions = false,
-    },
-    hints = { enabled = false },
   },
-  -- opts = {
-  --   provider = 'ollama',
-  --   vendors = {
-  --     ollama = {
-  --       __inherited_from = 'openai',
-  --       api_key_name = '',
-  --       endpoint = 'http://127.0.0.1:11434/v1',
-  --       model = 'deepseek-r1:8b',
-  --     },
-  --   },
-  -- },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = 'make',
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
@@ -49,6 +25,10 @@ return {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
     --- The below dependencies are optional,
+    'echasnovski/mini.pick', -- for file_selector provider mini.pick
+    'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
+    'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
+    'ibhagwan/fzf-lua', -- for file_selector provider fzf
     'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
     'zbirenbaum/copilot.lua', -- for providers='copilot'
     {
