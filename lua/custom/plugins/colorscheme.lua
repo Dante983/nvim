@@ -149,80 +149,81 @@ return {
   --     -- vim.cmd.colorscheme 'catppuccin'
   --   end,
   -- },
-  -- {
-  --   'ribru17/bamboo.nvim',
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     require('bamboo').setup {
-  --       -- optional configuration here
-  --     }
-  --     require('bamboo').load()
-  --     -- local bg_transparent = false
-  --     -- --
-  --     -- local toggle_transparency = function()
-  --     --   bg_transparent = not bg_transparent
-  --     --   -- vim.g.transparent_background = bg_transparent
-  --     --   require('bamboo').setup {
-  --     --     transparent = bg_transparent,
-  --     --   }
-  --     --   vim.cmd [[colorscheme bamboo]]
-  --     -- end
-  --     --
-  --     -- vim.keymap.set('n', '<leader>bg', toggle_transparency, { desc = 'Transparent background', noremap = true, silent = true })
-  --     -- vim.cmd.colorscheme 'bamboo'
-  --   end,
-  -- },
   {
-    'Tsuzat/NeoSolarized.nvim',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    'ribru17/bamboo.nvim',
+    lazy = false,
+    priority = 1000,
     config = function()
-      local ok_status, NeoSolarized = pcall(require, 'NeoSolarized')
-
-      if not ok_status then
-        return
+      require('bamboo').setup {
+        -- optional configuration here
+        transparent = true,
+      }
+      require('bamboo').load()
+      local bg_transparent = false
+      --
+      local toggle_transparency = function()
+        bg_transparent = not bg_transparent
+        -- vim.g.transparent_background = bg_transparent
+        require('bamboo').setup {
+          transparent = bg_transparent,
+        }
+        vim.cmd [[colorscheme bamboo]]
       end
 
-      NeoSolarized.setup {
-        -- your configuration comes here
-        style = 'dark', -- "dark" or "light"
-        transparent = true, -- true/false; Enable this to disable setting the background color
-        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-        enable_italics = true, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
-        styles = {
-          -- Style to be applied to different syntax groups
-          comments = { italic = true },
-          keywords = { italic = true },
-          functions = { bold = true },
-          variables = {},
-          string = { italic = true },
-          underline = true, -- true/false; for global underline
-          undercurl = true, -- true/false; for global undercurl
-        },
-        -- Add specific hightlight groups
-        on_highlights = function(highlights, colors)
-          highlights.Include.fg = colors.red -- Using `red` foreground for Includes
-        end,
-      }
-
-      -- NeoSolarized.setup()
-      -- local bg_transparent = true
-      -- -- --
-      -- local toggle_transparency = function()
-      --   bg_transparent = not bg_transparent
-      --   vim.g.transparent_background = bg_transparent
-      --   NeoSolarized.setup {
-      --     transparent = bg_transparent,
-      --     style = 'dark',
-      --   }
-      --   vim.cmd [[colorscheme NeoSolarized]]
-      -- end
-      -- --
-      -- vim.keymap.set('n', '<leader>bg', toggle_transparency, { desc = 'Transparent background', noremap = true, silent = true })
-      vim.cmd [[ colorscheme NeoSolarized ]]
+      vim.keymap.set('n', '<leader>bg', toggle_transparency, { desc = 'Transparent background', noremap = true, silent = true })
+      vim.cmd.colorscheme 'bamboo'
     end,
   },
+  -- {
+  --   'Tsuzat/NeoSolarized.nvim',
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     local ok_status, NeoSolarized = pcall(require, 'NeoSolarized')
+  --
+  --     if not ok_status then
+  --       return
+  --     end
+  --
+  --     NeoSolarized.setup {
+  --       -- your configuration comes here
+  --       style = 'dark', -- "dark" or "light"
+  --       transparent = true, -- true/false; Enable this to disable setting the background color
+  --       terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+  --       enable_italics = true, -- Italics for different hightlight groups (eg. Statement, Condition, Comment, Include, etc.)
+  --       styles = {
+  --         -- Style to be applied to different syntax groups
+  --         comments = { italic = true },
+  --         keywords = { italic = true },
+  --         functions = { bold = true },
+  --         variables = {},
+  --         string = { italic = true },
+  --         underline = true, -- true/false; for global underline
+  --         undercurl = true, -- true/false; for global undercurl
+  --       },
+  --       -- Add specific hightlight groups
+  --       on_highlights = function(highlights, colors)
+  --         highlights.Include.fg = colors.red -- Using `red` foreground for Includes
+  --       end,
+  --     }
+  --
+  --     -- NeoSolarized.setup()
+  --     -- local bg_transparent = true
+  --     -- -- --
+  --     -- local toggle_transparency = function()
+  --     --   bg_transparent = not bg_transparent
+  --     --   vim.g.transparent_background = bg_transparent
+  --     --   NeoSolarized.setup {
+  --     --     transparent = bg_transparent,
+  --     --     style = 'dark',
+  --     --   }
+  --     --   vim.cmd [[colorscheme NeoSolarized]]
+  --     -- end
+  --     -- --
+  --     -- vim.keymap.set('n', '<leader>bg', toggle_transparency, { desc = 'Transparent background', noremap = true, silent = true })
+  --     vim.cmd [[ colorscheme NeoSolarized ]]
+  --   end,
+  -- },
   -- {
   --   'scottmckendry/cyberdream.nvim',
   --   lazy = false,
