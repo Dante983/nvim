@@ -2,4 +2,32 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
-return {}
+return {
+  -- {
+  -- Add neotest-pest plugin for running PHP tests.
+  -- A package is also available for PHPUnit if needed.
+  --   'nvim-neotest/neotest',
+  --   dependencies = { 'V13Axel/neotest-pest', 'nvim-neotest/nvim-nio' },
+  --   opts = { adapters = { 'neotest-pest' } },
+  -- },
+  -- { 'rcarriga/nvim-dap-ui', dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' } },
+  -- { 'mfussenegger/nvim-dap' },
+  -- {
+  --   'adalessa/laravel.nvim',
+  --   dependencies = {
+  --     'tpope/vim-dotenv',
+  --     'nvim-telescope/telescope.nvim',
+  --     'MunifTanjim/nui.nvim',
+  --     'kevinhwang91/promise-async',
+  --   },
+  --   cmd = { 'Laravel' },
+  --   keys = {
+  --     { '<leader>lA', ':Laravel artisan<cr>' },
+  --     { '<leader>lR', ':Laravel routes<cr>' },
+  --     { '<leader>lm', ':Laravel related<cr>' },
+  --   },
+  --   event = { 'VeryLazy' },
+  --   opts = {},
+  --   config = true,
+  -- },
+}

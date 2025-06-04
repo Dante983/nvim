@@ -11,7 +11,7 @@ return {
   --       -- vim.cmd.colorscheme 'everforest',
   --       ---Controls the "hardness" of the background. Options are "soft", "medium" or "hard".
   --       ---Default is "medium".
-  --       background = 'medium',
+  --       background = 'soft',
   --       ---How much of the background should be transparent. 2 will have more UI
   --       ---components be transparent (e.g. status line background)
   --       transparent_background_level = 2,
@@ -76,6 +76,7 @@ return {
   --       ---@param palette Palette
   --       colours_override = function(palette) end,
   --     }
+  --     vim.cmd.colorscheme 'everforest'
   --   end,
   -- },
   -- {
@@ -131,7 +132,7 @@ return {
   --         -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   --       },
   --     }
-  --     --     -- Toggle background transparency
+  --     -- Toggle background transparency
   --     -- local bg_transparent = true
   --     -- --
   --     -- local toggle_transparency = function()
