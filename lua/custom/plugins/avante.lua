@@ -7,7 +7,7 @@ return {
     -- add any opts here
     -- for example
     provider = 'deepseek',
-    vendors = {
+    providers = {
       deepseek = {
         __inherited_from = 'openai',
         -- api_key_name = 'sk-d40ed4aa9f7f4ca8b29b63dece2fa939',
