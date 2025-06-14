@@ -14,7 +14,14 @@ return {
       timeout = 3000,
     },
     picker = {
-      enabled = true,
+      sources = {
+        explorer = {
+          layout = { layout = { position = "right" } },
+          follow_file = false,
+          jump = { close = false },
+          supports_live = false,
+        },
+      },
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
@@ -325,7 +332,7 @@ return {
       desc = "Quickfix List",
     },
     {
-      "<leader>sR",
+      "<leader>f<CR>",
       function()
         Snacks.picker.resume()
       end,
