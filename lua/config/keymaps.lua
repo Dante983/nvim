@@ -104,7 +104,7 @@ vim.keymap.set("n", "<C-P>", ':lua require("config.utils").toggle_go_test()<CR>'
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", opts)
 
 -- Move lines up/down
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("n", "<A-d>", ":m .+1<CR>==", { desc = "Move line down" })
+vim.keymap.set("n", "<A-u>", ":m .-2<CR>==", { desc = "Move line up" })
+vim.keymap.set("v", "<A-d>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "<A-u>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
