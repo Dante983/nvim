@@ -11,23 +11,24 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 
 -- Fast saving
 vim.keymap.set("n", "<leader>w", ":write!<CR>", { silent = true, desc = "Save file" })
+vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w <CR>", { desc = "Save without formatting" })
 vim.keymap.set("n", "<leader>q", ":q!<CR>", opts)
 
 -- Remap for dealing with visual line wraps
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
--- move focus 
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- move focus
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- Navigate between splits
-vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)
-vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
-vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
-vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", opts)
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", opts)
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", opts)
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", opts)
 
 -- better indenting
 vim.keymap.set("v", "<", "<gv")
