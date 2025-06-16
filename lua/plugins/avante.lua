@@ -5,15 +5,19 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = 'deepseek',
+    provider = 'gemini',
     providers = {
-      deepseek = {
-        __inherited_from = 'openai',
-        -- api_key_name = 'sk-d40ed4aa9f7f4ca8b29b63dece2fa939',
-        api_key_name = 'DEEPSEEK_API_KEY',
-        endpoint = 'https://api.deepseek.com',
-        model = 'deepseek-coder',
+      gemini = {
+        model = "gemini-2.5-flash-preview-05-20",
+        api_key_name = 'GEMINI_API_KEY',
       },
+      -- deepseek = {
+      --   __inherited_from = 'openai',
+      --   -- api_key_name = 'sk-d40ed4aa9f7f4ca8b29b63dece2fa939',
+      --   api_key_name = 'DEEPSEEK_API_KEY',
+      --   endpoint = 'https://api.deepseek.com',
+      --   model = 'deepseek-coder',
+      -- },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

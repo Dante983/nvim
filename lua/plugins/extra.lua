@@ -253,5 +253,12 @@ return {
   end,
   vim.keymap.set('n', '<leader>fW', '<cmd>Telescope dir live_grep<CR>', { desc = '[F]ind word in Dir', noremap = true, silent = true }),
   vim.keymap.set('n', '<leader>fD', '<cmd>Telescope dir find_files<CR>', { desc = '[F]ind Dir in Dir', noremap = true, silent = true }),
-  }
+  },
+  {
+    'FabijanZulj/blame.nvim',
+    init = function()
+      vim.api.nvim_set_keymap('n', '<Leader>gO', ':BlameToggle<CR>', { noremap = true, silent = true })
+    end,
+    config = true,
+  },
 }

@@ -28,8 +28,13 @@ return {
       format_on_save = {
         lsp_fallback = true,
         async = false,
-        timeout_ms = 500,
+        timeout_ms = 10000,
       },
+      --  formatters= {
+      --   ['blade-formatter'] = {
+      --     timeout_ms = 10000
+      --   },
+      -- }
     })
 
     vim.keymap.set("", "<leader>Ff", function()
