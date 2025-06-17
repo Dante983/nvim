@@ -109,3 +109,18 @@ vim.keymap.set("n", "<A-d>", ":m .+1<CR>==", { desc = "Move line down" })
 vim.keymap.set("n", "<A-u>", ":m .-2<CR>==", { desc = "Move line up" })
 vim.keymap.set("v", "<A-d>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "<A-u>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+
+-- Obsidian
+vim.keymap.set(
+  "n",
+  "<leader>Oc",
+  "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>",
+  { desc = "Obsidian Check Checkbox" }
+)
+vim.keymap.set("n", "<leader>Ot", "<cmd>ObsidianTemplate<CR>", { desc = "Insert Obsidian Template" })
+vim.keymap.set("n", "<leader>Po", "<cmd>ObsidianOpen<CR>", { desc = "Open in Obsidian App" })
+vim.keymap.set("n", "<leader>Ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Show ObsidianBacklinks" })
+vim.keymap.set("n", "<leader>Ol", "<cmd>ObsidianLinks<CR>", { desc = "Show ObsidianLinks" })
+vim.keymap.set("n", "<leader>On", "<cmd>ObsidianNew<CR>", { desc = "Create New Note" })
+vim.keymap.set("n", "<leader>Os", "<cmd>ObsidianSearch<CR>", { desc = "Search Obsidian" })
+vim.keymap.set("n", "<leader>Oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Quick Switch" })

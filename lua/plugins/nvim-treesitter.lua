@@ -14,7 +14,10 @@ return {
                 modules = {},
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = false,
+                    additional_vim_regex_highlighting = {
+                        "markdown",
+                        "markdown_inline",
+                    },
                 },
                 indent = { enable = true },
                 auto_install = true,
@@ -101,10 +104,10 @@ return {
                     swap = {
                         enable = true,
                         swap_next = {
-                            ["<leader>a"] = "@parameter.inner",
+                            -- ["<leader>a"] = "@parameter.inner",
                         },
                         swap_previous = {
-                            ["<leader>A"] = "@parameter.inner",
+                            -- ["<leader>A"] = "@parameter.inner",
                         },
                     },
                 },

@@ -1,22 +1,22 @@
 return {
   {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
-      require('copilot').setup {
+      require("copilot").setup({
         panel = {
           enabled = true,
           auto_refresh = false,
           keymap = {
-            jump_prev = '[[',
-            jump_next = ']]',
-            accept = '<C-w>',
-            refresh = 'gr',
-            open = '<M-CR>',
+            jump_prev = "[[",
+            jump_next = "]]",
+            accept = "<C-w>",
+            refresh = "gr",
+            open = "<M-CR>",
           },
           layout = {
-            position = 'bottom', -- | top | left | right
+            position = "bottom", -- | top | left | right
             ratio = 0.4,
           },
         },
@@ -26,12 +26,12 @@ return {
           hide_during_completion = true,
           debounce = 75,
           keymap = {
-            accept = '<C-w>',
+            accept = "<C-w>",
             accept_word = false,
             accept_line = false,
-            next = '<M-]>',
-            prev = '<M-[>',
-            dismiss = '<C-]>',
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
           },
         },
         filetypes = {
@@ -43,11 +43,11 @@ return {
           hgcommit = false,
           svn = false,
           cvs = false,
-          ['.'] = false,
+          ["."] = false,
         },
-        copilot_node_command = 'node', -- Node.js version must be > 18.x
+        copilot_node_command = "node", -- Node.js version must be > 18.x
         server_opts_overrides = {},
-      }
+      })
     end,
   },
   -- {
