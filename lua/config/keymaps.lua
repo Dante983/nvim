@@ -124,3 +124,7 @@ vim.keymap.set("n", "<leader>Ol", "<cmd>ObsidianLinks<CR>", { desc = "Show Obsid
 vim.keymap.set("n", "<leader>On", "<cmd>ObsidianNew<CR>", { desc = "Create New Note" })
 vim.keymap.set("n", "<leader>Os", "<cmd>ObsidianSearch<CR>", { desc = "Search Obsidian" })
 vim.keymap.set("n", "<leader>Oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Quick Switch" })
+
+-- update lazy and treesitter
+vim.keymap.set("n", "<leader>Ut", "<cmd>TSUpdate<CR>", { desc = "Update Treesitter" })
+vim.keymap.set("n", "<leader>Uu", "<cmd>Lazy update<CR>", { desc = "Update Lazy" })

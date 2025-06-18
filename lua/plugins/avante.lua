@@ -5,11 +5,11 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = 'gemini',
+    provider = "gemini",
     providers = {
       gemini = {
         model = "gemini-2.5-flash-preview-05-20",
-        api_key_name = 'GEMINI_API_KEY',
+        api_key_name = "GEMINI_API_KEY",
       },
       -- deepseek = {
       --   __inherited_from = 'openai',
@@ -18,6 +18,10 @@ return {
       --   endpoint = 'https://api.deepseek.com',
       --   model = 'deepseek-coder',
       -- },
+    },
+    web_search_engine = {
+      provider = "google", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
+      proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -55,7 +59,7 @@ return {
     },
     {
       -- Make sure to set this up properly if you have lazy=true
-      'MeanderingProgrammer/render-markdown.nvim',
+      "MeanderingProgrammer/render-markdown.nvim",
       opts = {
         file_types = { "markdown", "Avante" },
       },
