@@ -30,6 +30,17 @@ return {
         async = false,
         timeout_ms = 10000,
       },
+      formatters = {
+        ["php-cs-fixer"] = {
+          command = "php-cs-fixer",
+          args = {
+            "fix",
+            "--rules=@PSR12", -- Formatting preset. Other presets are available, see the php-cs-fixer docs.
+            "$FILENAME",
+          },
+          stdin = false,
+        },
+      },
       --  formatters= {
       --   ['blade-formatter'] = {
       --     timeout_ms = 10000

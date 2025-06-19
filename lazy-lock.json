@@ -1,7 +1,7 @@
 {
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "LuaSnip": { "branch": "master", "commit": "fb525166ccc30296fb3457441eb979113de46b00" },
-  "avante.nvim": { "branch": "main", "commit": "c356fc7ce16c3a3c1e09a8b890e589d7a0e7007a" },
+  "avante.nvim": { "branch": "main", "commit": "d963b09aafec7a1459784480732e9cb19d0b9bc7" },
   "blame.nvim": { "branch": "main", "commit": "b87b8c820e4cec06fbbd2f946b7b35c45906ee0c" },
   "blink.cmp": { "branch": "main", "commit": "9bcb14b43852a6f2bfd5ac9ef29cb5cf09b1b39b" },
   "catppuccin": { "branch": "main", "commit": "fa42eb5e26819ef58884257d5ae95dd0552b9a66" },
@@ -14,7 +14,7 @@
   "fidget.nvim": { "branch": "main", "commit": "d9ba6b7bfe29b3119a610892af67602641da778e" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
-  "fzf-lua": { "branch": "main", "commit": "ff348304202fc0d46a8d2ac308b6b4bab67beffc" },
+  "fzf-lua": { "branch": "main", "commit": "c53ba4f40f0514a5038646fb1e9ce05872b18eb1" },
   "github-theme": { "branch": "main", "commit": "c106c9472154d6b2c74b74565616b877ae8ed31d" },
   "gitsigns.nvim": { "branch": "main", "commit": "88205953bd748322b49b26e1dfb0389932520dc9" },
   "gruvbox-material": { "branch": "master", "commit": "f5f912fbc7cf2d45da6928b792d554f85c7aa89a" },
