@@ -128,3 +128,6 @@ vim.keymap.set("n", "<leader>Oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Quic
 -- update lazy and treesitter
 vim.keymap.set("n", "<leader>Ut", "<cmd>TSUpdate<CR>", { desc = "Update Treesitter" })
 vim.keymap.set("n", "<leader>Uu", "<cmd>Lazy update<CR>", { desc = "Update Lazy" })
+
+-- code companion
+vim.keymap.set("n", "<leader>cc", "<cmd>CodeCompanionChat<CR>", { desc = "Code Companion" })
