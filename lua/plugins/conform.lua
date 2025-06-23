@@ -73,8 +73,10 @@ return {
       if args.bang then
         -- FormatDisable! will disable formatting just for this buffer
         vim.b.disable_autoformat = true
+        vim.b.disable_whitespace_formatting = true
       else
         vim.g.disable_autoformat = true
+        vim.g.disable_whitespace_formatting = true
       end
     end, {
       desc = "Disable autoformat-on-save",
@@ -83,6 +85,8 @@ return {
     vim.api.nvim_create_user_command("FormatEnable", function()
       vim.b.disable_autoformat = false
       vim.g.disable_autoformat = false
+      vim.b.disable_whitespace_formatting = false
+      vim.g.disable_whitespace_formatting = false
     end, {
       desc = "Re-enable autoformat-on-save",
     })
