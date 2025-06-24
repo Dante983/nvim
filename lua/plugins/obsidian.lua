@@ -19,7 +19,10 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   -- keys = {
-  --   '<leader>Nn',
+  --   "<leader>OS",
+  --   "<cmd>ObsidianSync<CR>",
+  --   { desc = "Sync Obsidian Notes", noremap = true, silent = true },
+
   --   '<cmd>ObsidianNewNote<Space>',
   --   { desc = 'New Note', noremap = true, silent = true },
   -- },
@@ -70,4 +73,39 @@ return {
 
     -- see below for full list of options 👇
   },
+  vim.api.nvim_create_user_command("ObsidianSync", function()
+    local message = vim.fn.input("Commit message: ")
+    if message == "" then
+      print("Commit message is required.")
+      return
+    end
+    local cmd = string.format("cd ~/notes/personal/notes/dev && git add . && git commit -m '%s' && git push", message)
+    vim.fn.jobstart(cmd, {
+      stdout_buffered = true,
+      on_stdout = function(_, data)
+        if data then
+          print(table.concat(data, "\n"))
+        end
+      end,
+      on_stderr = function(_, data)
+        if data then
+          print("Error: " .. table.concat(data, "\n"))
+        end
+      end,
+      on_exit = function(_, code)
+        if code == 0 then
+          print("✅ Notes synced successfully!")
+        else
+          print("❌ Failed to sync notes.")
+        end
+      end,
+    })
+  end, {}),
+
+  vim.keymap.set(
+    "n",
+    "<leader>OS",
+    "<cmd>ObsidianSync<CR>",
+    { desc = "Sync Obsidian Notes", noremap = true, silent = true }
+  ),
 }
