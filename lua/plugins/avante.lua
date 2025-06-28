@@ -5,12 +5,12 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = "gemini",
-    providers = {
-      gemini = {
-        model = "gemini-2.5-flash-preview-05-20",
-        api_key_name = "GEMINI_API_KEY",
-      },
+    provider = "copilot",
+    -- providers = {
+    --   gemini = {
+    --     model = "gemini-2.5-flash-preview-05-20",
+    --     api_key_name = "GEMINI_API_KEY",
+    --   },
       -- deepseek = {
       --   __inherited_from = 'openai',
       --   -- api_key_name = 'sk-d40ed4aa9f7f4ca8b29b63dece2fa939',
@@ -18,7 +18,7 @@ return {
       --   endpoint = 'https://api.deepseek.com',
       --   model = 'deepseek-coder',
       -- },
-    },
+    -- },
     web_search_engine = {
       provider = "google", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
       proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
