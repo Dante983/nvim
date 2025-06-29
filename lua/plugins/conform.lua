@@ -44,7 +44,7 @@ return {
             php = { "pint" },
 
             -- Shell
-            sh = { "shfmt" },
+            -- sh = { "shfmt" },
             bash = { "shfmt" },
 
             -- Other (system tools)

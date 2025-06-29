@@ -15,6 +15,9 @@ return {
     },
     picker = {
       sources = {
+        files = {
+          hidden = true
+        },
         explorer = {
           layout = { layout = { position = "right" } },
           follow_file = true,

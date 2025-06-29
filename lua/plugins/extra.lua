@@ -261,4 +261,5 @@ return {
     end,
     config = true,
   },
+  {"ellisonleao/dotenv.nvim"}
 }
