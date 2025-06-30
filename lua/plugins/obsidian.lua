@@ -79,7 +79,7 @@ return {
       print("Commit message is required.")
       return
     end
-    local cmd = string.format("cd ~/notes/personal/notes/dev && git add . && git commit -m '%s' && git push", message)
+    local cmd = string.format("cd ~/notes/personal/notes/dev && git pull && git add . && git commit -m '%s' && git push", message)
     vim.fn.jobstart(cmd, {
       stdout_buffered = true,
       on_stdout = function(_, data)
