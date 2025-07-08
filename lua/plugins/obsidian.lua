@@ -102,6 +102,36 @@ return {
     })
   end, {}),
 
+  vim.keymap.set('n', '<leader>OP', function()
+    local obsidian_path = '~/notes/personal/notes'
+    local cmd = string.format('cd %s && git pull', obsidian_path)
+    vim.fn.jobstart(cmd, {
+      stdout_buffered = true,
+      stderr_buffered = true,
+      on_stdout = function(_, data)
+        if data then
+          vim.schedule(function()
+            vim.notify(table.concat(data, '\n'), vim.log.levels.INFO, { title = 'Obsidian Git Pull' })
+          end)
+        end
+      end,
+      on_stderr = function(_, data)
+        if data then
+          vim.schedule(function()
+            vim.notify(table.concat(data, '\n'), vim.log.levels.ERROR, { title = 'Obsidian Git Pull Error' })
+          end)
+        end
+      end,
+      on_exit = function(_, code)
+        if code == 0 then
+          vim.schedule(function()
+            vim.notify('Obsidian notes pulled successfully!', vim.log.levels.INFO, { title = 'Obsidian Git Pull' })
+          end)
+        end
+      end,
+    })
+  end, { desc = 'Git pull Obsidian notes' });
+
   vim.keymap.set(
     "n",
     "<leader>OS",

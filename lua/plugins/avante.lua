@@ -5,7 +5,7 @@ return {
   opts = {
     -- add any opts here
     -- for example
-    provider = "copilot",
+    -- provider = "copilot",
     -- providers = {
     --   gemini = {
     --     model = "gemini-2.5-flash-preview-05-20",
@@ -19,6 +19,13 @@ return {
       --   model = 'deepseek-coder',
       -- },
     -- },
+    provider = "ollama",
+    providers = {
+      ollama = {
+        endpoint = "http://127.0.0.1:11434", -- Note that there is no /v1 at the end.
+        model = "deepseek-r1:8b",
+      },
+    },
     web_search_engine = {
       provider = "google", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
       proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
