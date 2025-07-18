@@ -34,6 +34,7 @@ return {
             yaml = { "prettier" },
             markdown = { "prettier" },
             html = { "prettier" },
+            gohtml = { "prettier" },
             css = { "prettier" },
             scss = { "prettier" },
 

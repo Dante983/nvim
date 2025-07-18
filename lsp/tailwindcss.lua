@@ -10,6 +10,7 @@ return {
         "vue",
         "svelte",
         "html",
+        "gohtml",
         "blade",
         "css",
         "scss",
