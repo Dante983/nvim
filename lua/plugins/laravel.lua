@@ -13,30 +13,31 @@ return {
       })
     end,
   },
+  {
+    -- dir = "~/Developer/opensource/phprefactoring.nvim",
+    'adibhanna/phprefactoring.nvim',
+    enabled = true,
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+    ft = 'php',
+    config = function()
+      require('phprefactoring').setup()
+    end,
+  },
   -- {
-  --   -- dir = "~/Developer/opensource/phprefactoring.nvim",
-  --   'adibhanna/phprefactoring.nvim',
-  --   dependencies = {
-  --     'MunifTanjim/nui.nvim',
-  --   },
-  --   ft = 'php',
+  --   dir = "~/Developer/opensource/simplemarkdown.nvim",
+  --   enabled = false,
+  --   ft = 'markdown',
   --   config = function()
-  --     require('phprefactoring').setup({
-  --       ui = {
-  --         use_floating_menu = true,
-  --         border = 'rounded',
-  --         width = 45,
-  --       },
-  --       refactor = {
-  --         show_preview = true,
-  --         confirm_destructive = true,
-  --         auto_format = true,
-  --       },
-  --       lsp = {
-  --         use_lsp_rename = true,
-  --         preferred_clients = { 'intelephense', 'phpactor', 'psalm' },
-  --       },
-  --     })
-  --   end,
+  --     require('simplemarkdown').setup()
+  --   end
+  -- },
+  -- {
+  --   dir = "~/Developer/opensource/forest-night.nvim",
+  --   config = function()
+  --     -- vim.cmd('colorscheme forest-night')
+  --   end
   -- }
+-- }
 }
