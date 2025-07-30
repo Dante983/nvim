@@ -57,7 +57,7 @@ return {
             typescriptreact = { "eslint_d" },
 
             -- Lua
-            -- lua = { "luacheck" },
+            lua = { "luacheck" },
 
             -- Shell
             sh = { "shellcheck" },

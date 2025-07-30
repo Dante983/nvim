@@ -1,13 +1,14 @@
 return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
-  lazy = true,
+  -- lazy = true,
+  event = "vimEnter",
   ft = "markdown",
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
   opts = {
-    ui = { enable = true},
+    ui = { enable = false},
     workspaces = {
       {
         name = "personal",
@@ -59,11 +60,8 @@ return {
     -- see below for full list of options 👇
   },
   vim.api.nvim_create_user_command("ObsidianSync", function()
-    local message = vim.fn.input("Commit message: ")
-    if message == "" then
-      print("Commit message is required.")
-      return
-    end
+    local date_seconds = os.date "*: -%:e"
+    local message = string.format("Notes: %s", date_seconds)
     local cmd = string.format("cd ~/notes/personal/notes/dev && git pull && git add . && git commit -m '%s' && git push", message)
     vim.fn.jobstart(cmd, {
       stdout_buffered = true,

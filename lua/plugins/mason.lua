@@ -30,7 +30,7 @@ return {
                 -- Linters and diagnostics
                 "golangci-lint",
                 "eslint_d",
-                -- "luacheck", -- Lua linting
+                "luacheck", -- Lua linting
                 "pint",     -- Laravel Pint for PHP (formatting & linting)
 
                 -- Additional useful tools

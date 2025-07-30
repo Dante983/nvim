@@ -1,9 +1,10 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        version = false,
+        -- version = false,
         build = ":TSUpdate",
-        event = { "BufReadPost", "BufNewFile" },
+        main = 'nvim-treesitter.config',
+        -- event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
@@ -14,10 +15,10 @@ return {
                 modules = {},
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = {
-                        "markdown",
-                        "markdown_inline",
-                    },
+                    -- additional_vim_regex_highlighting = {
+                    --     "markdown",
+                    --     "markdown_inline",
+                    -- },
                 },
                 indent = { enable = true },
                 auto_install = true,
