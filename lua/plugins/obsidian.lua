@@ -52,10 +52,10 @@ return {
         opts = { desc = "New Note", noremap = true, silent = true },
       },
     },
-    completion = {
-      nvim_cmp = true,
-      min_chars = 2,
-    }
+    -- completion = {
+    --   nvim_cmp = true,
+    --   min_chars = 2,
+    -- }
 
     -- see below for full list of options 👇
   },
