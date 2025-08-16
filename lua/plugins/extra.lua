@@ -261,5 +261,10 @@ return {
     end,
     config = true,
   },
-  {"ellisonleao/dotenv.nvim"}
+  {"ellisonleao/dotenv.nvim"},
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   opts = {
+  --   },
+  -- }
 }
