@@ -6,7 +6,6 @@ return {
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
   opts = {
-    file_types = { "markdown", "Avante", ".md" },
-    ft = { "markdown", "Avante", "codecompanion", "obsidian" },
+    file_types = { "markdown", "Avante", "obsidian" },
   },
 }
