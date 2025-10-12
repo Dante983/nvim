@@ -18,92 +18,92 @@ return {
   },
   -- useful when there are embedded languages in certain types of files (e.g. Vue or React)
   { "joosepalviste/nvim-ts-context-commentstring", lazy = true },
-
-  -- Neovim plugin to improve the default vim.ui interfaces
-  {
-    "stevearc/dressing.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    opts = {},
-    config = function()
-      require("dressing").setup()
-    end,
-  },
-
+  --
+  -- -- Neovim plugin to improve the default vim.ui interfaces
+  -- {
+  --   "stevearc/dressing.nvim",
+  --   dependencies = { "MunifTanjim/nui.nvim" },
+  --   opts = {},
+  --   config = function()
+  --     require("dressing").setup()
+  --   end,
+  -- },
+  --
   -- Neovim notifications and LSP progress messages
-  {
-    "j-hui/fidget.nvim",
-  },
+  -- {
+  --   "j-hui/fidget.nvim",
+  -- },
 
   -- find and replace
-  {
-    "windwp/nvim-spectre",
-    enabled = true,
-    event = "BufRead",
-    keys = {
-      {
-        "<leader>Rr",
-        function()
-          require("spectre").open()
-        end,
-        desc = "Replace",
-      },
-      {
-        "<leader>Rw",
-        function()
-          require("spectre").open_visual({ select_word = true })
-        end,
-        desc = "Replace Word",
-      },
-      {
-        "<leader>Rf",
-        function()
-          require("spectre").open_file_search()
-        end,
-        desc = "Replace Buffer",
-      },
-    },
-  },
+  -- {
+  --   "windwp/nvim-spectre",
+  --   enabled = true,
+  --   event = "BufRead",
+  --   keys = {
+  --     {
+  --       "<leader>Rr",
+  --       function()
+  --         require("spectre").open()
+  --       end,
+  --       desc = "Replace",
+  --     },
+  --     {
+  --       "<leader>Rw",
+  --       function()
+  --         require("spectre").open_visual({ select_word = true })
+  --       end,
+  --       desc = "Replace Word",
+  --     },
+  --     {
+  --       "<leader>Rf",
+  --       function()
+  --         require("spectre").open_file_search()
+  --       end,
+  --       desc = "Replace Buffer",
+  --     },
+  --   },
+  -- },
 
   -- Heuristically set buffer options
-  {
-    "tpope/vim-sleuth",
-  },
+  -- {
+  --   "tpope/vim-sleuth",
+  -- },
 
-  {
-    {
-      "folke/lazydev.nvim",
-      ft = "lua", -- only load on lua files
-      opts = {
-        library = {
-          -- See the configuration section for more details
-          -- Load luvit types when the `vim.uv` word is found
-          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        },
-      },
-    },
-    { 
-      "saghen/blink.cmp",
-      opts = {
-        sources = {
-          -- add lazydev to your completion providers
-          default = { "lazydev", "lsp", "path", "snippets", "buffer" },
-          providers = {
-            lazydev = {
-              name = "LazyDev",
-              module = "lazydev.integrations.blink",
-              -- make lazydev completions top priority (see `:h blink.cmp`)
-              score_offset = 100,
-            },
-          },
-        },
-      },
-    }
-  },
+  -- {
+  --   {
+  --     "folke/lazydev.nvim",
+  --     ft = "lua", -- only load on lua files
+  --     opts = {
+  --       library = {
+  --         -- See the configuration section for more details
+  --         -- Load luvit types when the `vim.uv` word is found
+  --         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+  --       },
+  --     },
+  --   },
+  --   { 
+  --     "saghen/blink.cmp",
+  --     opts = {
+  --       sources = {
+  --         -- add lazydev to your completion providers
+  --         default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+  --         providers = {
+  --           lazydev = {
+  --             name = "LazyDev",
+  --             module = "lazydev.integrations.blink",
+  --             -- make lazydev completions top priority (see `:h blink.cmp`)
+  --             score_offset = 100,
+  --           },
+  --         },
+  --       },
+  --     },
+  --   }
+  -- },
 
   -- editor config support
-  {
-    "editorconfig/editorconfig-vim",
-  },
+  -- {
+  --   "editorconfig/editorconfig-vim",
+  -- },
 
   {
     "folke/flash.nvim",
@@ -175,7 +175,7 @@ return {
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      -- require("mini.surround").setup()
+      require("mini.surround").setup()
 
       require("mini.pairs").setup()
 
@@ -190,17 +190,17 @@ return {
     end,
   },
 
-  {
-    "echasnovski/mini.icons",
-    enabled = true,
-    opts = {},
-    lazy = true,
-  },
+  -- {
+  --   "echasnovski/mini.icons",
+  --   enabled = false,
+  --   opts = {},
+  --   lazy = true,
+  -- },
 
-  {
-    "fladson/vim-kitty",
-    "MunifTanjim/nui.nvim",
-  },
+  -- {
+  --   "fladson/vim-kitty",
+  --   "MunifTanjim/nui.nvim",
+  -- },
   {
     "nvchad/showkeys",
     cmd = "ShowkeysToggle",
@@ -254,14 +254,14 @@ return {
   vim.keymap.set('n', '<leader>fW', '<cmd>Telescope dir live_grep<CR>', { desc = '[F]ind word in Dir', noremap = true, silent = true }),
   vim.keymap.set('n', '<leader>fD', '<cmd>Telescope dir find_files<CR>', { desc = '[F]ind Dir in Dir', noremap = true, silent = true }),
   },
-  {
-    'FabijanZulj/blame.nvim',
-    init = function()
-      vim.api.nvim_set_keymap('n', '<Leader>gO', ':BlameToggle<CR>', { noremap = true, silent = true })
-    end,
-    config = true,
-  },
-  {"ellisonleao/dotenv.nvim"},
+  -- {
+  --   'FabijanZulj/blame.nvim',
+  --   init = function()
+  --     vim.api.nvim_set_keymap('n', '<Leader>gO', ':BlameToggle<CR>', { noremap = true, silent = true })
+  --   end,
+  --   config = true,
+  -- },
+  -- {"ellisonleao/dotenv.nvim"},
   {
     "andev0x/sql-formatter.nvim",
     ft = { "sql", "mysql", "plsql", "pgsql" },
