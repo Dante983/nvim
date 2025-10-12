@@ -11,7 +11,8 @@ vim.lsp.enable({
     "css-ls",
     "vue-ls",
     "pyright",
-    "luaformatter"
+    "luaformatter",
+    "postgrestools"
 })
 
 -- LSP servers are automatically managed by Mason

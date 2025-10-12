@@ -37,6 +37,8 @@ return {
                 "delve",      -- Go debugger
                 "shfmt",      -- Shell formatter
                 "shellcheck", -- Shell linter
+                "pgformatter",
+                "postgrestools"
 
                 -- Optional but useful additions
                 -- "markdownlint", -- Markdown linting

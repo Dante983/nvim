@@ -11,7 +11,7 @@ return {
           keymap = {
             jump_prev = "[[",
             jump_next = "]]",
-            accept = "<C-w>",
+            accept = "<C-W>",
             refresh = "gr",
             open = "<M-CR>",
           },
@@ -50,19 +50,33 @@ return {
       })
     end,
   },
-  -- {
-  --   "CopilotC-Nvim/CopilotChat.nvim",
-  --   dependencies = {
-  --     { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-  --     { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-  --   },
-  --   build = "make tiktoken", -- Only on MacOS or Linux
-  --   opts = {
-  --     -- See Configuration section for options
-  --   },
-  --     vim.keymap.set('n', '<leader>cC', ':CopilotChat<cr>', { noremap = true, silent = true }),
-  --   -- See Commands section for default commands if you want to lazy load on them
-  -- },
+  {
+    {
+      "CopilotC-Nvim/CopilotChat.nvim",
+      dependencies = {
+        { "nvim-lua/plenary.nvim", branch = "master" },
+      },
+      event = "BufEnter",
+      build = "make tiktoken",
+      opts = {
+        -- See Configuration section for options
+      },
+      keys = {
+        vim.keymap.set('n', '<leader>cc', ':CopilotChat<cr>', { noremap = true, silent = true }),
+        vim.keymap.set('n', '<leader>cf', function()
+          require('CopilotChat').open {
+            window = {
+              layout = 'float',
+              relative = 'cursor',
+              width = 1,
+              height = 0.4,
+              row = 1,
+            },
+          }
+        end, { desc = '[C]opilotChat [O]pen', noremap = true, silent = true }),
+      },
+    },
+  },
   -- {
   --   'CopilotC-Nvim/CopilotChat.nvim',
   --   branch = 'main',
