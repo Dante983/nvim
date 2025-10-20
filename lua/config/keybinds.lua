@@ -4,19 +4,27 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " " -- change localleader to a space
 
 vim.keymap.set("n", "<leader>e", function()
-    -- Check if any window has netrw open
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        local buf = vim.api.nvim_win_get_buf(win)
-        if vim.bo[buf].filetype == "netrw" then
-            vim.api.nvim_win_close(win, false)
-            return
-        end
+    if vim.bo.filetype == "netrw" then
+        vim.cmd("bd") -- Close netrw buffer
+    else
+        vim.cmd("Ex") -- Open netrw
     end
-    -- Open netrw on the right with specific width
-    vim.cmd("botright vsplit")
-    vim.cmd("vertical resize 50") -- Width in columns (adjust as needed)
-    vim.cmd("edit " .. vim.fn.expand("%:p:h"))
 end)
+-- vim.keymap.set("n", "<leader>n", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>e", function()
+--     -- Check if any window has netrw open
+--     for _, win in ipairs(vim.api.nvim_list_wins()) do
+--         local buf = vim.api.nvim_win_get_buf(win)
+--         if vim.bo[buf].filetype == "netrw" then
+--             vim.api.nvim_win_close(win, false)
+--             return
+--         end
+--     end
+--     -- Open netrw on the right with specific width
+--     vim.cmd("botright vsplit")
+--     vim.cmd("vertical resize 50") -- Width in columns (adjust as needed)
+--     vim.cmd("edit " .. vim.fn.expand("%:p:h"))
+-- end)
 vim.keymap.set("n", "<leader>w", ":write!<CR>", { silent = true, desc = "Save file" })
 vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w <CR>", { desc = "Save without formatting" })
 vim.keymap.set("n", "<leader>q", ":q!<CR>", opts)
