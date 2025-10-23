@@ -7,6 +7,7 @@ opt.cursorline = true -- Highlight current line
 opt.wrap = false -- Don't wrap lines
 opt.scrolloff = 10 -- Keep 10 lines above/below cursor
 opt.sidescrolloff = 8 -- Keep 8 columns left/right of cursor
+vim.o.signcolumn = "yes"
 
 -- Indentation
 opt.tabstop = 2 -- Tab width

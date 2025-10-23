@@ -81,7 +81,7 @@ return {
 			{
 				"<leader>Gl",
 				function()
-					require("gitsigns").blame_line()
+					require("gitsigns").blame()
 				end,
 				desc = "Blame",
 			},
