@@ -13,6 +13,7 @@ return {
         -- Snippets
         'L3MON4D3/LuaSnip',
         'rafamadriz/friendly-snippets',
+        'kristijanhusak/vim-dadbod-completion',
     },
     config = function()
         local autoformat_filetypes = {
@@ -161,8 +162,9 @@ return {
             sources = {
                 { name = 'path' },
                 { name = 'nvim_lsp' },
-                { name = 'buffer',  keyword_length = 3 },
-                { name = 'luasnip', keyword_length = 2 },
+                { name = 'buffer',               keyword_length = 3 },
+                { name = 'luasnip',              keyword_length = 2 },
+                { name = 'vim-dadbod-completion' }
             },
             snippet = {
                 expand = function(args)

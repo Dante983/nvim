@@ -39,8 +39,9 @@ return {
 		opts = {
 			theme = "tokyonight",
 			sections = {
-				lualiune_a = {
+				lualine_c = {
 					{
+						"filename",
 						path = 1,
 					},
 				},
