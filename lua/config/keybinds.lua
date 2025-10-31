@@ -5,9 +5,14 @@ vim.g.maplocalleader = " " -- change localleader to a space
 
 vim.keymap.set("n", "<leader>e", function()
     if vim.bo.filetype == "netrw" then
-        vim.cmd("bd") -- Close netrw buffer
+        vim.cmd("bd")    -- Close netrw buffer
     else
-        vim.cmd("Ex") -- Open netrw
+        vim.cmd("Explore %:h") -- Open netrw in current file's directory
+        -- Wait for netrw to load, then find the file
+        vim.schedule(function()
+            local filename = vim.fn.expand("#:t")
+            vim.fn.search("\\<" .. vim.fn.escape(filename, "\\") .. "\\>")
+        end)
     end
 end)
 -- vim.keymap.set("n", "<leader>n", vim.cmd.Ex)
