@@ -1,4 +1,3 @@
-if true then return {} end
 return {
     "folke/snacks.nvim",
     priority = 1000,
@@ -9,25 +8,14 @@ return {
         dashboard = { enabled = false },
         explorer = { enabled = false },
         indent = { enabled = false },
-        input = { enabled = false },
+        input = { enabled = true },
         notifier = {
             enabled = false,
             timeout = 3000,
         },
         picker = {
-            enabled = false,
-            sources = {
-                files = {
-                    hidden = true,
-                },
-                explorer = {
-                    enabled = false,
-                    layout = { layout = { position = "right" } },
-                    follow_file = true,
-                    jump = { close = false },
-                    supports_live = false,
-                },
-            },
+            enabled = true,
+            ui_select = true,
         },
         quickfile = { enabled = false },
         scope = { enabled = true },
@@ -49,8 +37,9 @@ return {
             end,
             desc = "Smart Find Files",
         },
+        -- { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
         {
-            "<leader>fw",
+            "<leader>/",
             function()
                 Snacks.picker.grep()
             end,
@@ -70,13 +59,7 @@ return {
             end,
             desc = "Notification History",
         },
-        {
-            "<leader>e",
-            function()
-                Snacks.explorer()
-            end,
-            desc = "File Explorer",
-        },
+        -- { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
         -- find
         {
             "<leader>o",
@@ -95,6 +78,7 @@ return {
             end,
             desc = "Buffers",
         },
+        -- { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
         {
             "<leader>fc",
             function()
@@ -108,16 +92,6 @@ return {
                 Snacks.picker.files()
             end,
             desc = "Find Files",
-        },
-        {
-            "<leader>fF",
-            function()
-                Snacks.picker.files({
-                    hidden = true,
-                    ignored = true,
-                })
-            end,
-            desc = "Find Files (Hidden)",
         },
         {
             "<leader>fg",
@@ -134,7 +108,7 @@ return {
             desc = "Projects",
         },
         {
-            "<leader>fo",
+            "<leader>fr",
             function()
                 Snacks.picker.recent()
             end,
@@ -190,6 +164,35 @@ return {
             end,
             desc = "Git Log File",
         },
+        -- gh
+        {
+            "<leader>gi",
+            function()
+                Snacks.picker.gh_issue()
+            end,
+            desc = "GitHub Issues (open)",
+        },
+        {
+            "<leader>gI",
+            function()
+                Snacks.picker.gh_issue({ state = "all" })
+            end,
+            desc = "GitHub Issues (all)",
+        },
+        {
+            "<leader>gp",
+            function()
+                Snacks.picker.gh_pr()
+            end,
+            desc = "GitHub Pull Requests (open)",
+        },
+        {
+            "<leader>gP",
+            function()
+                Snacks.picker.gh_pr({ state = "all" })
+            end,
+            desc = "GitHub Pull Requests (all)",
+        },
         -- Grep
         {
             "<leader>sb",
@@ -199,14 +202,14 @@ return {
             desc = "Buffer Lines",
         },
         {
-            "<C-s>",
+            "<leader>sB",
             function()
                 Snacks.picker.grep_buffers()
             end,
             desc = "Grep Open Buffers",
         },
         {
-            "<leader>st",
+            "<leader>sg",
             function()
                 Snacks.picker.grep()
             end,
@@ -348,7 +351,7 @@ return {
             desc = "Quickfix List",
         },
         {
-            "<leader>f<CR>",
+            "<leader>sR",
             function()
                 Snacks.picker.resume()
             end,
@@ -406,14 +409,28 @@ return {
             desc = "Goto T[y]pe Definition",
         },
         {
-            "<leader>p",
+            "gai",
+            function()
+                Snacks.picker.lsp_incoming_calls()
+            end,
+            desc = "C[a]lls Incoming",
+        },
+        {
+            "gao",
+            function()
+                Snacks.picker.lsp_outgoing_calls()
+            end,
+            desc = "C[a]lls Outgoing",
+        },
+        {
+            "<leader>ss",
             function()
                 Snacks.picker.lsp_symbols()
             end,
             desc = "LSP Symbols",
         },
         {
-            "<leader>WS",
+            "<leader>sS",
             function()
                 Snacks.picker.lsp_workspace_symbols()
             end,
@@ -456,7 +473,7 @@ return {
             desc = "Notification History",
         },
         {
-            "Q",
+            "<leader>bd",
             function()
                 Snacks.bufdelete()
             end,
@@ -505,22 +522,8 @@ return {
             end,
             desc = "which_key_ignore",
         },
-        {
-            "]]",
-            function()
-                Snacks.words.jump(vim.v.count1)
-            end,
-            desc = "Next Reference",
-            mode = { "n", "t" },
-        },
-        {
-            "[[",
-            function()
-                Snacks.words.jump(-vim.v.count1)
-            end,
-            desc = "Prev Reference",
-            mode = { "n", "t" },
-        },
+        -- { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+        -- { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
         {
             "<leader>N",
             desc = "Neovim News",
@@ -551,7 +554,15 @@ return {
                 _G.bt = function()
                     Snacks.debug.backtrace()
                 end
-                vim.print = _G.dd -- Override print to use snacks for `:=` command
+
+                -- Override print to use snacks for `:=` command
+                if vim.fn.has("nvim-0.11") == 1 then
+                    vim._print = function(_, ...)
+                        dd(...)
+                    end
+                else
+                    vim.print = _G.dd
+                end
 
                 -- Create some toggle mappings
                 Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")

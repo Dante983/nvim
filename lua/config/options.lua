@@ -56,6 +56,8 @@ api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+opt.splitright = true
+
 -- vim.g.netrw_banner = 0       -- Hide the Netrw banner on top
 -- vim.g.netrw_altv = 1         -- Create the split of the Netrw window to the left
 -- vim.g.netrw_browse_split = 4 -- Open files in previous window. This emulates the typical "drawer" behavior
