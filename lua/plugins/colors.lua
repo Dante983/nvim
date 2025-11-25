@@ -25,6 +25,19 @@ return {
         end,
     },
     -- {
+    --     "AlphaTechnolog/pywal.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         require("pywal").setup({
+    --             theme = "auto",
+    --             bg_contrast = 0.1,
+    --             transparent_bg = true,
+    --         })
+    --         vim.cmd.colorscheme("pywal")
+    --     end,
+    -- },
+    -- {
     -- 	"tahayvr/matteblack.nvim",
     -- 	lazy = false,
     -- 	priority = 1000,
@@ -42,6 +55,7 @@ return {
         },
         opts = {
             theme = "tokyonight",
+            -- theme = "pywal-nvim",
             sections = {
                 lualine_c = {
                     {
