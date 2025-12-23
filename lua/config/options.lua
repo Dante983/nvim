@@ -57,6 +57,7 @@ api.nvim_create_autocmd("TextYankPost", {
 })
 
 opt.splitright = true
+vim.o.termguicolors = true
 
 -- vim.g.netrw_banner = 0       -- Hide the Netrw banner on top
 -- vim.g.netrw_altv = 1         -- Create the split of the Netrw window to the left

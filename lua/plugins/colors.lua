@@ -5,23 +5,49 @@
 -- end
 
 return {
+    -- {
+    --     "folke/tokyonight.nvim",
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    --         -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    --         -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
+    --         -- enable_transparency()
+    --         require("tokyonight").setup({
+    --             transparent = true,
+    --             styles = {
+    --                 sidebars = "transparent",
+    --                 floats = "transparent",
+    --             },
+    --         })
+    --         vim.cmd([[colorscheme tokyonight]])
+    --     end,
+    -- },
+    -- Install without configuration
+    -- { 'projekt0n/github-nvim-theme', name = 'github-theme' }
+
+    -- Or with configuration
     {
-        "folke/tokyonight.nvim",
-        lazy = false,
+        "catppuccin/nvim",
+        name = "catppuccin",
         priority = 1000,
+        lazy = false,
         config = function()
-            -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-            -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-            -- vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-            -- enable_transparency()
-            require("tokyonight").setup({
-                transparent = true,
-                styles = {
-                    sidebars = "transparent",
-                    floats = "transparent",
+            require("catppuccin").setup({
+                flavour = "mocha", -- latte, frappe, macchiato, mocha
+                transparent_background = true,
+                integrations = {
+                    telescope = true,
+                    lualine = true,
+                    treesitter = true,
+                    notify = true,
+                    cmp = true,
+                    gitsigns = true,
+                    nvimtree = true,
                 },
             })
-            vim.cmd([[colorscheme tokyonight]])
+            vim.cmd.colorscheme("catppuccin")
         end,
     },
     -- {
