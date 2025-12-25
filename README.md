@@ -2,5 +2,5 @@
 
 Always a WIP.
 
-## Inspired by Adib config.
-https://github.com/adibhanna/nvim
+## Inspired by tony-btw (Tony Banters) config.
+https://github.com/tonybanters/nvim
