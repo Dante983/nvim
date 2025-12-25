@@ -3,18 +3,18 @@ local opts = { noremap = true, silent = true }
 vim.g.mapleader = " "
 vim.g.maplocalleader = " " -- change localleader to a space
 
-vim.keymap.set("n", "<leader>e", function()
-    if vim.bo.filetype == "netrw" then
-        vim.cmd("bd")    -- Close netrw buffer
-    else
-        vim.cmd("Explore %:h") -- Open netrw in current file's directory
-        -- Wait for netrw to load, then find the file
-        vim.schedule(function()
-            local filename = vim.fn.expand("#:t")
-            vim.fn.search("\\<" .. vim.fn.escape(filename, "\\") .. "\\>")
-        end)
-    end
-end)
+-- vim.keymap.set("n", "<leader>e", function()
+--     if vim.bo.filetype == "netrw" then
+--         vim.cmd("bd")    -- Close netrw buffer
+--     else
+--         vim.cmd("Explore %:h") -- Open netrw in current file's directory
+--         -- Wait for netrw to load, then find the file
+--         vim.schedule(function()
+--             local filename = vim.fn.expand("#:t")
+--             vim.fn.search("\\<" .. vim.fn.escape(filename, "\\") .. "\\>")
+--         end)
+--     end
+-- end)
 -- vim.keymap.set("n", "<leader>n", vim.cmd.Ex)
 -- vim.keymap.set("n", "<leader>e", function()
 --     -- Check if any window has netrw open

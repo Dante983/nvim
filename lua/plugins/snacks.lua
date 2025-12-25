@@ -6,7 +6,13 @@ return {
     opts = {
         bigfile = { enabled = true },
         dashboard = { enabled = false },
-        explorer = { enabled = false },
+        explorer = {
+          layout = {
+            layout = {
+              position = "right",
+            },
+          },
+        },
         indent = { enabled = false },
         input = { enabled = true },
         notifier = {
@@ -59,7 +65,7 @@ return {
             end,
             desc = "Notification History",
         },
-        -- { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+        { "<leader>e", function() Snacks.explorer({layout={layout={position = 'right'}}}) end, desc = "File Explorer" },
         -- find
         {
             "<leader>o",
