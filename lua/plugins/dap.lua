@@ -8,8 +8,8 @@ return {
         'nvim-neotest/nvim-nio',
 
         -- optional
-        -- 'mason-org/mason.nvim',
-        -- 'jay-babu/mason-nvim-dap.nvim',
+        'mason-org/mason.nvim',
+        'jay-babu/mason-nvim-dap.nvim',
 
         -- Language-specific debuggers
         'leoluz/nvim-dap-go', -- Golang
@@ -80,13 +80,13 @@ return {
         local dapui = require 'dapui'
 
         -- optional
-        -- require('mason-nvim-dap').setup {
-        --     automatic_installation = true,
-        --     handlers = {},
-        --     ensure_installed = {
-        --         'delve',
-        --     },
-        -- }
+        require('mason-nvim-dap').setup {
+            automatic_installation = true,
+            handlers = {},
+            ensure_installed = {
+                'delve',
+            },
+        }
 
         -- Dap UI setup
         dapui.setup {
