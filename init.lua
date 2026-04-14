@@ -1,7 +1,7 @@
 -- =========================================
 --  NeoVim 0.12+ Native Pack + LSP Config, optimize  with load 155ms
 -- =========================================
-
+require("plugins") -- Then load plugins
 -- Bootstrap plugins (native pack)
 vim.pack.add({
 	{ src = "https://github.com/williamboman/mason.nvim.git" },
@@ -17,11 +17,13 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim.git" },
 	{ src = "https://github.com/ibhagwan/fzf-lua.git" },
 	{ src = "https://github.com/folke/tokyonight.nvim.git" },
-	{ src = "https://github.com/akinsho/toggleterm.nvim.git" },
-	{ src = "https://github.com/folke/which-key.nvim" },
+	-- { src = "https://github.com/akinsho/toggleterm.nvim.git" },
+	-- { src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/folke/persistence.nvim" },
 	{ src = "https://github.com/christoomey/vim-tmux-navigator" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	-- { src = "https://github.com/folke/snacks.nvim" },
 	-- Γ¥î Removed nvim-web-devicons (using mini.icons instead)
 })
 
@@ -126,37 +128,38 @@ require("lualine").setup({
 })
 
 require("mini.pairs").setup()
-require("toggleterm").setup({
-	size = 15,
-	open_mapping = [[<c-\>]],
-	shade_terminals = true,
-	shading_factor = 2,
-	direction = "float",
-	float_opts = { border = "single", winblend = 0 },
-})
+-- require("toggleterm").setup({
+-- 	size = 15,
+-- 	open_mapping = [[<c-\>]],
+-- 	shade_terminals = true,
+-- 	shading_factor = 2,
+-- 	direction = "float",
+-- 	float_opts = { border = "single", winblend = 0 },
+-- })
 
-require("which-key").setup({
-	preset = "helix",
-	delay = 200,
-	icons = {
-		rules = false,
-		breadcrumb = " ", -- symbol used in the command line area that shows your active key combo
-		separator = "󱦰  ", -- symbol used between a key and it's label
-		group = "󰹍 ", -- symbol prepended to a group
-	},
-	plugins = {
-		spelling = {
-			enabled = false,
-		},
-	},
-	win = {
-		height = {
-			max = math.huge,
-		},
-	},
-})
+-- require("which-key").setup({
+-- 	preset = "helix",
+-- 	delay = 200,
+-- 	icons = {
+-- 		rules = false,
+-- 		breadcrumb = " ", -- symbol used in the command line area that shows your active key combo
+-- 		separator = "󱦰  ", -- symbol used between a key and it's label
+-- 		group = "󰹍 ", -- symbol prepended to a group
+-- 	},
+-- 	plugins = {
+-- 		spelling = {
+-- 			enabled = false,
+-- 		},
+-- 	},
+-- 	win = {
+-- 		height = {
+-- 			max = math.huge,
+-- 		},
+-- 	},
+-- })
 
 require("oil").setup()
+require("gitsigns").setup()
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -168,11 +171,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 require("persistence").setup()
 
 -- Helper: Toggle lazygit (if installed)
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
-function _lazygit_toggle()
-	lazygit:toggle()
-end
+-- local Terminal = require("toggleterm.terminal").Terminal
+-- local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
+-- function _lazygit_toggle()
+-- 	lazygit:toggle()
+-- end
 
 -- =========================================
 --  Display Settings
@@ -187,6 +190,7 @@ vim.opt.sidescrolloff = 20
 vim.o.tabstop = 4 -- Tab width
 vim.o.shiftwidth = 4 -- Indent width
 vim.o.winborder = "single"
+
 -- Search settings
 vim.opt.ignorecase = true -- Case insensitive search
 vim.opt.smartcase = true -- Case sensitive if uppercase in search
@@ -230,7 +234,7 @@ end
 --  Diagnostics / Auto Lint + Format
 -- =========================================
 vim.diagnostic.config({
-	virtual_text = { prefix = "Aloo" },
+	virtual_text = true,
 	signs = true,
 	underline = true,
 	update_in_insert = false,
@@ -261,7 +265,7 @@ local opts = { noremap = true, silent = true }
 keymap("n", "<leader>ff", function()
 	require("fzf-lua").files()
 end, opts)
-keymap("n", "<leader>fg", function()
+keymap("n", "<leader>fw", function()
 	require("fzf-lua").live_grep()
 end, opts)
 keymap("n", "<leader>fb", function()
@@ -283,8 +287,8 @@ keymap("n", "<leader>lp", vim.diagnostic.goto_prev, opts)
 keymap("n", "<leader>w", "<cmd>w<CR>", opts)
 keymap("n", "<leader>W", "<cmd>noautocmd w <CR>", { desc = "Save without formatting" })
 keymap("n", "<leader>q", "<cmd>q<CR>", opts)
-keymap("n", "<leader>ft", "<cmd>ToggleTerm<CR>", opts)
-keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", opts)
+-- keymap("n", "<leader>ft", "<cmd>ToggleTerm<CR>", opts)
+-- keymap("n", "<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", opts)
 keymap("t", "<Esc>", [[<C-\><C-n>]], opts)
 
 -- Buffer navigation
