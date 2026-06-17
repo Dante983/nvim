@@ -10,13 +10,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +291 init.lua
+badd +836 init.lua
 badd +29 Session.vim
+badd +1 .gitignore
 argglobal
 %argdel
 edit init.lua
 argglobal
-balt Session.vim
+balt .gitignore
 setlocal foldmethod=expr
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -25,12 +26,20 @@ setlocal foldlevel=99
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
-let s:l = 307 - ((46 * winheight(0) + 31) / 62)
+129
+sil! normal! zo
+780
+sil! normal! zo
+814
+sil! normal! zo
+839
+sil! normal! zo
+let s:l = 837 - ((41 * winheight(0) + 27) / 54)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 307
-normal! 0
+keepjumps 837
+normal! 02|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -44,7 +53,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :

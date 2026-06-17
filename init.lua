@@ -90,7 +90,7 @@ vim.opt.clipboard:append("unnamedplus") -- use system clipboard
 vim.opt.modifiable = true -- allow buffer modifications
 
 vim.opt.guicursor =
-	"n-v-c:block,i-ci-ve:block,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175" -- cursor blinking and settings
+	"n-v-c:block,i:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- Folding: requires treesitter available at runtime; safe fallback if not
 vim.opt.foldmethod = "expr" -- use expression for folding
@@ -643,10 +643,10 @@ require("mini.diff").setup({
 require("mini.git").setup({})
 
 local MiniDiff = require("mini.diff")
-vim.keymap.set("n", "]h", function()
+vim.keymap.set("n", "<leader>gn", function()
 	MiniDiff.goto_hunk("next")
 end, { desc = "Next git hunk" })
-vim.keymap.set("n", "[h", function()
+vim.keymap.set("n", "<leader>gp", function()
 	MiniDiff.goto_hunk("prev")
 end, { desc = "Prev git hunk" })
 vim.keymap.set("n", "<leader>hs", MiniDiff.operator, { desc = "Stage hunk" })
@@ -824,7 +824,17 @@ vim.lsp.config("bashls", {})
 vim.lsp.config("ts_ls", {})
 vim.lsp.config("gopls", {})
 vim.lsp.config("clangd", {})
-vim.lsp.config("intelephense", {})
+
+local get_intelephense_license_key = function()
+    local f = assert(io.open(os.getenv("HOME") .. "/intelephense/license.txt", "rb"))
+    local content = f:read("*a")
+    f:close()
+    return string.gsub(content, "%s+", "")
+end
+
+vim.lsp.config("intelephense", {
+    init_options = { licenceKey = get_intelephense_license_key() },
+})
 
 vim.g.rustaceanvim = {
 	server = {
