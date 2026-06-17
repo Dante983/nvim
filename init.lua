@@ -308,7 +308,7 @@ vim.keymap.set("n", "<leader>pa", function() -- show file path
 	print("file:", path)
 end, { desc = "Copy full file path" })
 
-vim.keymap.set("n", "<leader>td", function()
+vim.keymap.set("n", "<leader>Td", function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
 
@@ -498,14 +498,10 @@ setup_treesitter()
 
 local function get_notes_path()
   local os_release = vim.fn.system("cat /etc/os-release")
-  if os_release:match("Artix") then
-    return vim.fn.expand("~/Documents/Notes")
-  elseif os_release:match("Ubuntu") then
-    return "/mnt/c/Users/Rad/Documents/Notes"
-  elseif os_release:match("Arch") then
+  if os_release:match("Arch") then
     return vim.fn.expand("~/notes/personal")
   else
-    error("Unsupported OS: no notes path configured")
+    return vim.fn.expand("~/notes/work")
   end
 end
 
@@ -552,26 +548,49 @@ vim.api.nvim_set_hl(0, "NvimTreeNormal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", { fg = "#2a2a2a", bg = "none" })
 vim.api.nvim_set_hl(0, "NvimTreeEndOfBuffer", { bg = "none" })
 
-require("fzf-lua").setup({})
+require("fzf-lua").setup({
+    oldfiles = {
+    prompt            = 'History❯ ',
+    cwd_only          = true,
+    stat_file         = true,         -- verify files exist on disk
+    -- can also be a lua function, for example:
+    -- stat_file = FzfLua.utils.file_is_readable,
+    -- stat_file = function() return true end,
+    include_current_session = false,  -- include bufs from current session
+    ignore_current_buffer   = false,   -- exclude current buf from session
+  },
+})
 
 vim.keymap.set("n", "<leader>ff", function()
 	require("fzf-lua").files()
 end, { desc = "FZF Files" })
+vim.keymap.set("n", "<leader>fF", function()
+	require("fzf-lua").files({
+		hidden = true,           -- Show hidden files
+		respect_gitignore = false -- Show gitignored files
+	})
+end, { desc = "FZF Files (including hidden & ignored)" })
 vim.keymap.set("n", "<leader>fw", function()
 	require("fzf-lua").live_grep()
 end, { desc = "FZF Live Grep" })
 vim.keymap.set("n", "<leader>fb", function()
 	require("fzf-lua").buffers()
 end, { desc = "FZF Buffers" })
-vim.keymap.set("n", "<leader>fh", function()
-	require("fzf-lua").help_tags()
-end, { desc = "FZF Help Tags" })
-vim.keymap.set("n", "<leader>fx", function()
-	require("fzf-lua").diagnostics_document()
-end, { desc = "FZF Diagnostics Document" })
-vim.keymap.set("n", "<leader>fX", function()
-	require("fzf-lua").diagnostics_workspace()
-end, { desc = "FZF Diagnostics Workspace" })
+vim.keymap.set("n", "<leader>f<CR>", function()
+	require("fzf-lua").live_grep_resume()
+end, { desc = "FZF resume" })
+vim.keymap.set("n", "<leader>o", function()
+	require("fzf-lua").oldfiles()
+end, { desc = "FZF History" })
+-- vim.keymap.set("n", "<leader>fh", function()
+-- 	require("fzf-lua").help_tags()
+-- end, { desc = "FZF Help Tags" })
+-- vim.keymap.set("n", "<leader>fx", function()
+-- 	require("fzf-lua").diagnostics_document()
+-- end, { desc = "FZF Diagnostics Document" })
+-- vim.keymap.set("n", "<leader>fX", function()
+-- 	require("fzf-lua").diagnostics_workspace()
+-- end, { desc = "FZF Diagnostics Workspace" })
 
 require("mini.ai").setup({})
 require("mini.comment").setup({})
@@ -737,18 +756,18 @@ local function lsp_on_attach(ev)
 		require("fzf-lua").lsp_implementations()
 	end, vim.tbl_extend("force", opts, { desc = "Find implementations" }))
 
-	if client:supports_method("textDocument/codeAction", bufnr) then
-		vim.keymap.set("n", "<leader>oi", function()
-			vim.lsp.buf.code_action({
-				context = { only = { "source.organizeImports" }, diagnostics = {} },
-				apply = true,
-				bufnr = bufnr,
-			})
-			vim.defer_fn(function()
-				vim.lsp.buf.format({ bufnr = bufnr })
-			end, 50)
-		end, vim.tbl_extend("force", opts, { desc = "Organize imports" }))
-	end
+	-- if client:supports_method("textDocument/codeAction", bufnr) then
+	-- 	vim.keymap.set("n", "<leader>oi", function()
+	-- 		vim.lsp.buf.code_action({
+	-- 			context = { only = { "source.organizeImports" }, diagnostics = {} },
+	-- 			apply = true,
+	-- 			bufnr = bufnr,
+	-- 		})
+	-- 		vim.defer_fn(function()
+	-- 			vim.lsp.buf.format({ bufnr = bufnr })
+	-- 		end, 50)
+	-- 	end, vim.tbl_extend("force", opts, { desc = "Organize imports" }))
+	-- end
 end
 
 vim.api.nvim_create_autocmd("LspAttach", { group = augroup, callback = lsp_on_attach })
