@@ -10,14 +10,15 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 let s:shortmess_save = &shortmess
 set shortmess+=aoO
-badd +836 init.lua
-badd +29 Session.vim
-badd +1 .gitignore
+badd +308 init.lua
+badd +13 Session.vim
+badd +110 nvim-pack-lock.json
+badd +204 ~/Projects/cbweb-docker/src/cbweb/app/Services/PbaiPromotionService.php
 argglobal
 %argdel
 edit init.lua
 argglobal
-balt .gitignore
+balt ~/Projects/cbweb-docker/src/cbweb/app/Services/PbaiPromotionService.php
 setlocal foldmethod=expr
 setlocal foldexpr=v:lua.vim.treesitter.foldexpr()
 setlocal foldmarker={{{,}}}
@@ -26,20 +27,18 @@ setlocal foldlevel=99
 setlocal foldminlines=1
 setlocal foldnestmax=20
 setlocal foldenable
-129
+612
 sil! normal! zo
-780
+698
 sil! normal! zo
-814
+707
 sil! normal! zo
-839
-sil! normal! zo
-let s:l = 837 - ((41 * winheight(0) + 27) / 54)
+let s:l = 315 - ((33 * winheight(0) + 27) / 54)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 837
-normal! 02|
+keepjumps 315
+normal! 092|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

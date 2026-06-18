@@ -312,6 +312,9 @@ vim.keymap.set("n", "<leader>Td", function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
 
+vim.keymap.set("n", "<leader>ps", "<cmd>lua vim.pack.update()<CR>", { desc = 'Update Plugins' })
+
+
 -- ============================================================================
 -- AUTOCMDS
 -- ============================================================================
@@ -711,10 +714,10 @@ local function lsp_on_attach(ev)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
 	vim.keymap.set("n", "<leader>gd", function()
-		require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
+		require("fzf-lua").lsp_definitions()
 	end, vim.tbl_extend("force", opts, { desc = "Go to definition (fzf)" }))
 
-	vim.keymap.set("n", "<leader>gD", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
+	-- vim.keymap.set("n", "gD", vim.lsp.buf.definition, vim.tbl_extend("force", opts, { desc = "Go to definition" }))
 
 	vim.keymap.set("n", "<leader>gS", function()
 		vim.cmd("vsplit")
@@ -740,7 +743,7 @@ local function lsp_on_attach(ev)
 
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover documentation" }))
 
-	vim.keymap.set("n", "<leader>fr", function()
+	vim.keymap.set("n", "gr", function()
 		require("fzf-lua").lsp_references()
 	end, vim.tbl_extend("force", opts, { desc = "Find references" }))
 	vim.keymap.set("n", "<leader>ft", function()
@@ -966,7 +969,7 @@ local function FloatingTerminal()
 		row = row,
 		col = col,
 		style = "minimal",
-		border = "rounded",
+		border = "single",
 	})
 
 	vim.wo[terminal_state.win].winblend = 0
