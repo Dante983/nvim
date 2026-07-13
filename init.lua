@@ -256,6 +256,13 @@ setup_dynamic_statusline()
 -- ============================================================================
 -- KEYMAPS
 -- ============================================================================
+
+local session_dir = '~/.local/share/nvim/session'
+
+local function cwd_session_name()
+  return vim.fn.substitute(vim.fn.getcwd(), '/', '_', 'g') .. '.vim'
+end
+
 vim.g.mapleader = " " -- space for leader
 vim.g.maplocalleader = " " -- space for localleader
 
@@ -314,6 +321,13 @@ end, { desc = "Toggle diagnostics" })
 
 vim.keymap.set("n", "<leader>ps", "<cmd>lua vim.pack.update()<CR>", { desc = 'Update Plugins' })
 
+vim.keymap.set('n', '<leader>Ls', function()
+ require('mini.sessions').write(cwd_session_name(), { force = true })
+end, { desc = 'Write CWD session' })
+
+vim.keymap.set('n', '<leader>Ll', function()
+ require('mini.sessions').read(cwd_session_name())
+end, { desc = 'Load CWD session' })
 
 -- ============================================================================
 -- AUTOCMDS
@@ -441,6 +455,7 @@ vim.pack.add({
 	"https://github.com/obsidian-nvim/obsidian.nvim",
 	"https://github.com/mrcjkb/rustaceanvim",
 	"https://github.com/christoomey/vim-tmux-navigator",
+    "https://github.com/NeogitOrg/neogit",
 })
 
 -- ============================================================================
@@ -607,7 +622,29 @@ require("mini.bufremove").setup({})
 require("mini.notify").setup({})
 require("mini.icons").setup({})
 require("mini.sessions").setup({
-      autoread = true,
+     autoread = false,
+     autowrite = false,
+     directory = session_dir,
+     file = '',
+     verbose = { read = false, write = true, delete = false },
+   })
+
+-- Auto-load CWD session on startup (if it exists)
+vim.api.nvim_create_autocmd("VimEnter", {
+  nested = true,
+  once = true,
+  callback = function()
+    if vim.fn.argc() == 0 then
+      pcall(require('mini.sessions').read, cwd_session_name())
+    end
+  end,
+})
+
+-- Auto-save CWD session on exit
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    require('mini.sessions').write(cwd_session_name(), { force = true })
+  end,
 })
 require("mini.clue").setup({
     triggers = {
@@ -661,6 +698,9 @@ vim.keymap.set("n", "<leader>hb", function()
 end, { desc = "Git blame/show" })
 
 require("mason").setup({})
+
+require("neogit").setup()
+vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Open Neogit UI" })
 
 -- ============================================================================
 -- LSP, Linting, Formatting & Completion
@@ -828,6 +868,13 @@ vim.lsp.config("ts_ls", {})
 vim.lsp.config("gopls", {})
 vim.lsp.config("clangd", {})
 
+-- vim.lsp.config['phpantom'] = {
+--   cmd = { 'phpantom_lsp' },
+--   filetypes = { 'php' },
+--   root_markers = { 'composer.json', '.git' },
+-- }
+-- vim.lsp.enable('phpantom')
+
 local get_intelephense_license_key = function()
     local f = assert(io.open(os.getenv("HOME") .. "/intelephense/license.txt", "rb"))
     local content = f:read("*a")
@@ -920,6 +967,7 @@ vim.lsp.enable({
 	"clangd",
 	"efm",
     "intelephense"
+    -- "phpantom"
 })
 
 -- ============================================================================
